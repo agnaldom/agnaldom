@@ -1,458 +1,532 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
   <title>Agnaldo Marinho — SRE &amp; Platform Engineer</title>
-  <meta name="description" content="Agnaldo Marinho — Specialist SRE & Platform Engineer. 16 years in IT, 8 running production platforms in payments, health, and energy. Kubernetes, Observability, IaC & GitOps.">
+  <meta name="description" content="Agnaldo Marinho — Especialista SRE / DevOps. 16 anos em TI, 8 construindo e operando plataformas de produção em meios de pagamento, saúde e energia. Kubernetes, Observabilidade, IaC &amp; GitOps.">
   <meta name="author" content="Agnaldo Marinho">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Agnaldo Marinho — SRE &amp; Platform Engineer">
-  <meta property="og:description" content="16 years in IT, 8 running production platforms. Multi-cloud Kubernetes, Datadog/OTel observability, Terraform, and SLIs/SLOs in mission-critical environments.">
+  <meta property="og:description" content="Especialista em SRE e Plataforma com foco em Kubernetes, Observabilidade (Datadog/OTel) e confiabilidade em sistemas críticos.">
   <meta property="og:url" content="https://agnaldom.github.io/agnaldom/">
+  <meta property="og:image" content="assets/images/profile.jpg">
 
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="#" class="nav-brand">
-        <span>Agnaldo Marinho</span>
-        <span class="nav-brand-tag">/ SRE</span>
-      </a>
+  <!-- Mouse Spotlight (Brittany Chiang style) -->
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
 
-      <ul class="nav-links">
-        <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
-        <li><a href="#incident" data-i18n="navIncident">Postmortem</a></li>
-        <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
-        <li><a href="#skills" data-i18n="navSkills">Stack</a></li>
-        <li><a href="#education" data-i18n="navEducation">Education</a></li>
-        <li><a href="#contact" data-i18n="navContact">Contact</a></li>
-      </ul>
+  <div class="page-container">
+    <!-- ======================================================================
+         LEFT COLUMN (Fixed / Sticky on Desktop)
+         ====================================================================== -->
+    <header class="left-col">
+      <div class="left-top">
+        <!-- Profile Photo -->
+        <div class="profile-photo-wrapper">
+          <img src="assets/images/profile.jpg" alt="Agnaldo Marinho" class="profile-photo" width="96" height="96">
+        </div>
 
-      <div class="nav-controls">
-        <button id="lang-toggle" class="control-btn" type="button" aria-label="Toggle language">PT</button>
-        <button id="theme-toggle" class="control-btn" type="button" aria-label="Toggle theme">
-          <span class="theme-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+        <h1 class="author-name">
+          <a href="#">Agnaldo Marinho</a>
+        </h1>
+
+        <h2 class="author-role" data-i18n="authorRole">
+          Especialista DevOps / SRE &bull; Cloud &bull; Plataforma
+        </h2>
+
+        <p class="author-lead" data-i18n="authorLead">
+          Construo plataformas resilientes em Kubernetes multi-cloud e observabilidade de alta disponibilidade onde indisponibilidade custa caro.
+        </p>
+
+        <!-- Interactive Section Nav Indicator (Brittany Chiang style) -->
+        <nav class="side-nav" aria-label="Navegação na página">
+          <ul class="nav-list">
+            <li>
+              <a href="#about" class="nav-item-link active" data-target="about">
+                <span class="nav-indicator"></span>
+                <span data-i18n="navAbout">Sobre</span>
+              </a>
+            </li>
+            <li>
+              <a href="#experience" class="nav-item-link" data-target="experience">
+                <span class="nav-indicator"></span>
+                <span data-i18n="navExperience">Experiência</span>
+              </a>
+            </li>
+            <li>
+              <a href="#projects" class="nav-item-link" data-target="projects">
+                <span class="nav-indicator"></span>
+                <span data-i18n="navProjects">Projetos</span>
+              </a>
+            </li>
+            <li>
+              <a href="#postmortem" class="nav-item-link" data-target="postmortem">
+                <span class="nav-indicator"></span>
+                <span data-i18n="navPostmortem">Postmortem</span>
+              </a>
+            </li>
+            <li>
+              <a href="#skills" class="nav-item-link" data-target="skills">
+                <span class="nav-indicator"></span>
+                <span data-i18n="navSkills">Competências</span>
+              </a>
+            </li>
+            <li>
+              <a href="#education" class="nav-item-link" data-target="education">
+                <span class="nav-indicator"></span>
+                <span data-i18n="navEducation">Formação</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Left Bottom: Socials & Quick Actions -->
+      <div class="left-bottom">
+        <div class="social-links">
+          <a href="https://github.com/agnaldom" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
-          </span>
-        </button>
-      </div>
-    </div>
-  </nav>
+          </a>
 
-  <main class="container">
-    <!-- Hero / Profile Overview -->
-    <header class="hero">
-      <div class="hero-meta" data-i18n="heroLocation">Navegantes, SC — Brazil • 100% Remote • English (B2) &amp; Spanish</div>
-      <h1 class="hero-name">Agnaldo Marinho</h1>
-      <p class="hero-title" data-i18n="heroRoleTitle">DevOps &amp; SRE Specialist • Observability • Root Cause Analysis • Kubernetes • Multi-Cloud</p>
-      
-      <div class="hero-bio">
-        <p data-i18n="heroBio1">
-          16 years in IT, with 8 years building and operating production platforms where downtime has direct financial and clinical cost — payments (<strong>Elo, Redecard</strong>), critical healthcare (<strong>Albert Einstein Hospital</strong>), energy (<strong>Raízen</strong>), and manufacturing (<strong>Gerdau</strong>).
-        </p>
-        <br>
-        <p data-i18n="heroBio2">
-          My foundation is observability and deep troubleshooting: running Datadog, Prometheus, Grafana, Loki, and OpenTelemetry to catch degradation before users notice, defending <strong>SLIs, SLOs, and error budgets</strong> that hold up when production disagrees with the plan. Before the cloud, I spent 8 years in Linux administration, datacenters, and networking.
-        </p>
-      </div>
+          <a href="https://www.linkedin.com/in/agnaldom" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
 
-      <div class="hero-actions">
-        <a href="#contact" class="action-link primary" data-i18n="actionContact">Get in Touch</a>
-        <a href="https://github.com/agnaldom" target="_blank" rel="noopener noreferrer" class="action-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          <span>GitHub</span>
-        </a>
-        <a href="https://www.linkedin.com/in/agnaldom" target="_blank" rel="noopener noreferrer" class="action-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          <span>LinkedIn</span>
-        </a>
+          <a href="mailto:agnaldomarinho7@gmail.com" class="social-icon-btn" id="copy-email-btn" aria-label="Email" title="Copiar e-mail">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="util-controls">
+          <button id="lang-toggle" class="btn-ctrl" type="button" aria-label="Mudar idioma">EN</button>
+          <button id="theme-toggle" class="btn-ctrl" type="button" aria-label="Alternar tema">
+            <span class="theme-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+              </svg>
+            </span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Selected Engineering Projects -->
-    <section class="section-block" id="projects">
-      <div class="section-head">
-        <h2 class="section-heading" data-i18n="headingProjects">Selected Projects</h2>
-        <p class="section-subheading" data-i18n="subheadingProjects">Open-source platform tooling, Kubernetes facts for AI agents, and SRE frameworks.</p>
-      </div>
-
-      <div class="projects-stack">
-        <!-- crosswatc -->
-        <article class="project-item">
-          <div class="project-header-row">
-            <a href="https://github.com/agnaldom/crosswatc" target="_blank" rel="noopener noreferrer" class="project-name-link">
-              agnaldom/crosswatc &rarr;
-            </a>
-            <span class="project-category" data-i18n="crosswatcCategory">Developer Platform &bull; GitOps Lifecycle</span>
-          </div>
-          <p class="project-summary" data-i18n="crosswatcSummary">
-            Developer Experience and Infrastructure Lifecycle Management platform operating over GitOps (GitHub &rarr; Argo CD &rarr; Crossplane &rarr; Cloud). Provides self-service cloud abstractions without exposing raw cluster manifests to product developers.
+    <!-- ======================================================================
+         RIGHT COLUMN (Scrollable Content)
+         ====================================================================== -->
+    <div class="right-col">
+      <!-- Section: About -->
+      <section id="about" class="content-section">
+        <div class="mobile-section-header" data-i18n="navAbout">Sobre</div>
+        <div class="about-text">
+          <p data-i18n="aboutP1">
+            Sou especialista em DevOps e SRE com <strong>16 anos de carreira em TI</strong>, sendo 8 dedicados a plataformas de produção em ambientes onde cada minuto de indisponibilidade tem custo financeiro direto — meios de pagamento (<strong>Elo</strong>), adquirência (<strong>Redecard</strong>), saúde de missão crítica (<strong>Hospital Albert Einstein</strong>), energia (<strong>Raízen</strong>) e indústria (<strong>Gerdau</strong>).
           </p>
-          <ul class="project-spec-points">
-            <li data-i18n="crosswatcPoint1">Engineered in Go (Gin REST API + background reconciler/discovery workers) with a Next.js web application.</li>
-            <li data-i18n="crosswatcPoint2">Orchestrates multi-cloud resource provisioning through Crossplane compositions and Argo CD sync cycles.</li>
-            <li data-i18n="crosswatcPoint3">Built with PostgreSQL schema migrations, health adapters, and production Helm manifests.</li>
-          </ul>
-          <div class="project-tags">
-            <span class="tag-pill">Go (Gin)</span>
-            <span class="tag-pill">Crossplane</span>
-            <span class="tag-pill">Argo CD</span>
-            <span class="tag-pill">Next.js</span>
-            <span class="tag-pill">PostgreSQL</span>
-            <span class="tag-pill">Kubernetes</span>
-          </div>
-        </article>
-
-        <!-- mcp-k8s -->
-        <article class="project-item">
-          <div class="project-header-row">
-            <a href="https://github.com/agnaldom/mcp-k8s" target="_blank" rel="noopener noreferrer" class="project-name-link">
-              agnaldom/mcp-k8s &rarr;
-            </a>
-            <span class="project-category" data-i18n="mcpCategory">Model Context Protocol &bull; AI Ops</span>
-          </div>
-          <p class="project-summary" data-i18n="mcpSummary">
-            A strictly read-only Model Context Protocol (MCP) server in Go that exposes deterministic, sanitised Kubernetes facts to AI agents. Designed specifically to remove common failure modes of raw kubectl queries in autonomous investigations.
+          <p data-i18n="aboutP2">
+            Minha base técnica é <strong>observabilidade e resolução metódica de incidentes</strong>. Opero monitoramento desde 2017 e hoje projeto arquiteturas de telemetria com <strong>Datadog, Prometheus, Grafana, Loki e OpenTelemetry</strong> — métricas, logs, traces distribuídos, Synthetic Monitoring e alertas de baixa taxa de falso-positivo, sustentando <strong>SLIs, SLOs e orçamentos de erro</strong> que resistem à realidade da produção.
           </p>
-          <ul class="project-spec-points">
-            <li data-i18n="mcpPoint1">Eliminates the "ambiguity of silence": explicitly declares the time window it provably covers vs kube-apiserver --event-ttl.</li>
-            <li data-i18n="mcpPoint2">Delivers rule-based observations with transparent thresholds rather than subjective opinions.</li>
-            <li data-i18n="mcpPoint3">Guaranteed read-only architecture using SelfSubjectAccessReview authorization checks; zero mutable state.</li>
-          </ul>
-          <div class="project-tags">
-            <span class="tag-pill">Go</span>
-            <span class="tag-pill">Model Context Protocol (MCP)</span>
-            <span class="tag-pill">client-go</span>
-            <span class="tag-pill">Kubernetes API</span>
-            <span class="tag-pill">RBAC</span>
-          </div>
-        </article>
-
-        <!-- sre-ia-ops -->
-        <article class="project-item">
-          <div class="project-header-row">
-            <a href="https://github.com/agnaldom/sre-ia-ops" target="_blank" rel="noopener noreferrer" class="project-name-link">
-              agnaldom/sre-ia-ops &rarr;
-            </a>
-            <span class="project-category" data-i18n="sreiaCategory">Living Book &bull; Hands-on Operational Labs</span>
-          </div>
-          <p class="project-summary" data-i18n="sreiaSummary">
-            An open-source living book and runnable laboratory suite for SREs and platform engineers implementing operational AI with executable code, local runtime clusters, and GitHub Actions pipelines.
+          <p data-i18n="aboutP3">
+            Antes da nuvem, acumulei <strong>8 anos de administração de Linux, redes e datacenters</strong> na UFPA e FADESP. Automatizo com <strong>Terraform</strong> (meu padrão de IaC desde 2018), <strong>Kubernetes</strong> (EKS, AKS, GKE, CCE), entrega contínua com <strong>GitOps (ArgoCD)</strong> e desenvolvo ferramentas em <strong>Go, Python e Shell</strong>. Assumo a confiabilidade da infraestrutura colado aos times de desenvolvimento: <em>confiabilidade que vive só no time de infraestrutura é confiabilidade que não escala</em>.
           </p>
-          <ul class="project-spec-points">
-            <li data-i18n="sreiaPoint1">Includes an automated local development lab (Kind cluster, Prometheus, Grafana, Loki, and controlled chaos apps).</li>
-            <li data-i18n="sreiaPoint2">Vector indexing with Qdrant for semantic runbook retrieval and incident response playbooks.</li>
-            <li data-i18n="sreiaPoint3">Focuses on critical verification of AI-generated IaC and pipelines before production deployment.</li>
-          </ul>
-          <div class="project-tags">
-            <span class="tag-pill">Python</span>
-            <span class="tag-pill">Kind</span>
-            <span class="tag-pill">Prometheus</span>
-            <span class="tag-pill">Grafana / Loki</span>
-            <span class="tag-pill">Qdrant</span>
-            <span class="tag-pill">AIOps</span>
-          </div>
-        </article>
-
-        <!-- k8s-slo-toolkit -->
-        <article class="project-item">
-          <div class="project-header-row">
-            <a href="https://github.com/agnaldom/agnaldom" class="project-name-link">
-              k8s-slo-toolkit
-            </a>
-            <span class="project-category" data-i18n="sloCategory">Reliability &bull; SRE Tooling</span>
-          </div>
-          <p class="project-summary" data-i18n="sloSummary">
-            SLI definitions, error budget formulas, and multi-window burn-rate Prometheus rules ready to drop into a Kubernetes cluster to eliminate threshold alert fatigue.
-          </p>
-          <div class="project-tags">
-            <span class="tag-pill">Prometheus</span>
-            <span class="tag-pill">Grafana</span>
-            <span class="tag-pill">SLI / SLO</span>
-            <span class="tag-pill">Helm</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Incident Postmortem & Troubleshooting Case Study -->
-    <section class="section-block" id="incident">
-      <div class="section-head">
-        <h2 class="section-heading" data-i18n="headingIncident">Root Cause Analysis Case Study</h2>
-        <p class="section-subheading" data-i18n="subheadingIncident">Documented production incident resolution showing methodical isolation and MTTR reduction.</p>
-      </div>
-
-      <div class="postmortem-container">
-        <div class="postmortem-header">
-          <div class="postmortem-title-group">
-            <h3 data-i18n="pmHeaderTitle">Postmortem: Resolving TCP 443 Handshake Stall in Kubernetes</h3>
-          </div>
-          <span class="postmortem-status-badge" data-i18n="pmHeaderBadge">MTTR: 45 min &bull; Severity: Critical</span>
         </div>
+      </section>
 
-        <div class="postmortem-body">
-          <div class="postmortem-grid">
-            <div class="pm-section">
-              <h4 data-i18n="pmSymptomTitle">Incident Symptom</h4>
-              <p data-i18n="pmSymptomText">
-                Following a production microservice release, pods immediately fell into a CrashLoopBackOff restart cycle. The default team assumption was Redis failure, a shared critical dependency.
+      <!-- Section: Experience -->
+      <section id="experience" class="content-section">
+        <div class="mobile-section-header" data-i18n="navExperience">Experiência</div>
+        <div class="card-group">
+          <!-- 200dev / Elo -->
+          <article class="interactive-card">
+            <header class="card-meta-date">2025 — PRESENTE</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <span data-i18n="exp1Title">Site Reliability Engineer — Especialista &bull; 200dev (Elo)</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </h3>
+              <div class="card-company-sub">Projeto RISE &bull; Meios de Pagamento &bull; Remoto</div>
+              <p class="card-desc" data-i18n="exp1Desc">
+                Responsável pela disponibilidade, resiliência e escala de microsserviços em meios de pagamento. Conduzi a migração do ingress-nginx para <strong>Istio Service Mesh</strong> (Gateway, HTTPRoute, DestinationRule). Opero a camada de borda: <strong>Azure Front Door</strong> (WAF, roteamento global), <strong>Azure APIM</strong> e CDN. Conduzi a migração dos pipelines de infraestrutura para <strong>GitHub Actions</strong> e evoluí a observabilidade com Datadog, Prometheus, Loki e OpenTelemetry.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Kubernetes (AKS/EKS)</span>
+                <span class="card-tag">Istio Service Mesh</span>
+                <span class="card-tag">Terraform</span>
+                <span class="card-tag">ArgoCD</span>
+                <span class="card-tag">GitHub Actions</span>
+                <span class="card-tag">Datadog</span>
+                <span class="card-tag">OpenTelemetry</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Provider IT / Elo -->
+          <article class="interactive-card">
+            <header class="card-meta-date">2023 — 2025</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <span data-i18n="exp2Title">Site Reliability Engineer — Especialista &bull; Provider IT (Elo)</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </h3>
+              <div class="card-company-sub">Projeto RISE &bull; Meios de Pagamento &bull; Remoto</div>
+              <p class="card-desc" data-i18n="exp2Desc">
+                Responsabilidade ponta a ponta pela infraestrutura em <strong>quatro nuvens</strong>: AWS (EKS), Azure (AKS), Google Cloud (GKE) e Huawei Cloud (CCE) provisionadas com Terraform. Implantei entrega contínua GitOps com <strong>ArgoCD</strong>. Operei mensageria com <strong>Apache Kafka</strong>, Amazon SQS e Azure Service Bus. Elevei a maturidade de monitoramento com Datadog e OpenTelemetry, definindo SLI, SLO e error budgets em produção.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Multi-Cloud K8s</span>
+                <span class="card-tag">Terraform</span>
+                <span class="card-tag">ArgoCD</span>
+                <span class="card-tag">Apache Kafka</span>
+                <span class="card-tag">SLIs / SLOs</span>
+                <span class="card-tag">Go / Python</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cortex -->
+          <article class="interactive-card">
+            <header class="card-meta-date">2022 — 2023</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <span data-i18n="exp3Title">Site Reliability Engineer — Especialista &bull; Cortex</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </h3>
+              <div class="card-company-sub">AWS Cloud &bull; Remoto</div>
+              <p class="card-desc" data-i18n="exp3Desc">
+                Projetei e implementei clusters Amazon ECS para orquestração de containers com foco em escalabilidade e resiliência. Construí pipelines padronizados de CI/CD para deploy automatizado e conduzi PoCs de automação orientando a adoção do Amazon EKS na empresa.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">AWS (ECS/EKS)</span>
+                <span class="card-tag">Terraform</span>
+                <span class="card-tag">Docker</span>
+                <span class="card-tag">CI/CD</span>
+                <span class="card-tag">Python / Shell</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Raízen -->
+          <article class="interactive-card">
+            <header class="card-meta-date">2021 — 2022</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <span data-i18n="exp4Title">DevOps Engineer &bull; Raízen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </h3>
+              <div class="card-company-sub">Energia e Combustíveis &bull; Remoto</div>
+              <p class="card-desc" data-i18n="exp4Desc">
+                Revisei e evoluí a arquitetura AWS, provisionando novos ambientes com Terraform e pipelines de IaC. Gerenciei containers com Kubernetes (deploy, auto-scaling, segurança e observabilidade) e integrei SonarQube definindo quality gates para barrar código antes da produção.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">AWS</span>
+                <span class="card-tag">Kubernetes</span>
+                <span class="card-tag">Terraform</span>
+                <span class="card-tag">SonarQube</span>
+                <span class="card-tag">CI/CD</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Albert Einstein -->
+          <article class="interactive-card">
+            <header class="card-meta-date">2020 — 2021</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <span data-i18n="exp5Title">Senior DevOps Engineer &bull; Hospital Israelita Albert Einstein</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </h3>
+              <div class="card-company-sub">Saúde de Missão Crítica &bull; Remoto</div>
+              <p class="card-desc" data-i18n="exp5Desc">
+                Operação de infraestrutura AWS de missão crítica em saúde onde indisponibilidade afeta procedimentos clínicos e financeiros. Automatizei provisionamento com Terraform, implantei <strong>Teleport</strong> para acesso privilegiado auditável e conduzi redução de custos com rightsizing e Trusted Advisor.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">AWS (EKS, EC2, Lambda)</span>
+                <span class="card-tag">Teleport</span>
+                <span class="card-tag">Terraform</span>
+                <span class="card-tag">Azure DevOps</span>
+                <span class="card-tag">Jenkins</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- UFPA & FADESP -->
+          <article class="interactive-card">
+            <header class="card-meta-date">2010 — 2018</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <span data-i18n="exp6Title">SysAdmin de Datacenter &amp; Redes &bull; CTIC/UFPA &amp; FADESP</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </h3>
+              <div class="card-company-sub">8 Anos de Base de Infraestrutura e Redes &bull; Belém/PA</div>
+              <p class="card-desc" data-i18n="exp6Desc">
+                Administração de servidores físicos, hypervisors Xen e virtualização por containers Docker. Diagnóstico de DNS, roteamento TCP/IP, switching, proxies reversos (Nginx/Apache), bancos de dados (MySQL, PostgreSQL, Oracle) e projeto de monitoramento com Zabbix e Grafana.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Linux Avançado</span>
+                <span class="card-tag">DNS &amp; TCP/IP</span>
+                <span class="card-tag">Zabbix &amp; Grafana</span>
+                <span class="card-tag">Docker &amp; Xen</span>
+                <span class="card-tag">Bash / Shell</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section: Projects -->
+      <section id="projects" class="content-section">
+        <div class="mobile-section-header" data-i18n="navProjects">Projetos</div>
+        <div class="card-group">
+          <!-- crosswatc -->
+          <article class="interactive-card">
+            <header class="card-meta-date">GITOPS &bull; PLATFORM</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <a href="https://github.com/agnaldom/crosswatc" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none; display:inline-flex; align-items:baseline; gap:0.35rem;">
+                  <span>crosswatc</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </h3>
+              <p class="card-desc" data-i18n="crosswatcDesc">
+                Plataforma de Developer Experience (DevX) e gerenciamento de ciclo de vida sobre GitOps (<strong>GitHub &rarr; Argo CD &rarr; Crossplane &rarr; Cloud</strong>). Fornece abstrações de autosserviço para times de produto sem expor a complexidade de manifests Kubernetes brutos. Construído com API em Go (Gin), workers de reconciliação em Go, migrations PostgreSQL e frontend em Next.js.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Go (Gin)</span>
+                <span class="card-tag">Crossplane</span>
+                <span class="card-tag">Argo CD</span>
+                <span class="card-tag">Next.js</span>
+                <span class="card-tag">PostgreSQL</span>
+                <span class="card-tag">Helm</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- mcp-k8s -->
+          <article class="interactive-card">
+            <header class="card-meta-date">AI OPS &bull; GO</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <a href="https://github.com/agnaldom/mcp-k8s" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none; display:inline-flex; align-items:baseline; gap:0.35rem;">
+                  <span>mcp-k8s</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </h3>
+              <p class="card-desc" data-i18n="mcpDesc">
+                Servidor Model Context Protocol (MCP) em Go <strong>estritamente read-only</strong> que entrega fatos estruturados e auditáveis de Kubernetes para agentes de IA. Elimina a ambiguidade do <code>--event-ttl</code> declarando explicitamente a janela temporal coberta, e substitui palpites subjetivos por regras determinísticas declaradas. Zero mutações acidentais via <code>SelfSubjectAccessReview</code>.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Go</span>
+                <span class="card-tag">Model Context Protocol</span>
+                <span class="card-tag">client-go</span>
+                <span class="card-tag">Kubernetes RBAC</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- sre-ia-ops -->
+          <article class="interactive-card">
+            <header class="card-meta-date">LIVING BOOK &bull; LABS</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <a href="https://github.com/agnaldom/sre-ia-ops" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none; display:inline-flex; align-items:baseline; gap:0.35rem;">
+                  <span>sre-ia-ops (SRE AI Revolution)</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </h3>
+              <p class="card-desc" data-i18n="sreiaDesc">
+                Livro vivo open-source e laboratório executável para times de SRE e DevOps implementarem IA operacional com código real. Inclui ambiente local reproduzível em Kind cluster equipado com Prometheus, Grafana, Loki e cenários de caos, além de busca vetorial com Qdrant para runbooks operacionais.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">Kind / K8s</span>
+                <span class="card-tag">Prometheus / Loki</span>
+                <span class="card-tag">Qdrant</span>
+                <span class="card-tag">GitHub Actions</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- k8s-slo-toolkit -->
+          <article class="interactive-card">
+            <header class="card-meta-date">SRE TOOLING</header>
+            <div class="card-body">
+              <h3 class="card-title-link">
+                <span>k8s-slo-toolkit</span>
+              </h3>
+              <p class="card-desc" data-i18n="sloDesc">
+                Definições de SLIs, matemática de error budgets e regras de taxa de queima multi-janela para Prometheus, prontas para implantar em clusters Kubernetes e erradicar alertas de limiar ruidosos.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Prometheus</span>
+                <span class="card-tag">Grafana</span>
+                <span class="card-tag">SLIs / SLOs</span>
+                <span class="card-tag">Error Budget</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section: Postmortem Case Study -->
+      <section id="postmortem" class="content-section">
+        <div class="mobile-section-header" data-i18n="navPostmortem">Postmortem</div>
+        <div class="postmortem-box">
+          <div class="postmortem-box-header">
+            <h3 class="pm-h3" data-i18n="pmTitle">Caso de Causa Raiz: Handshake TCP 443 sem ACK</h3>
+            <span class="pm-badge" data-i18n="pmBadge">MTTR: 45 min &bull; Severidade Crítica</span>
+          </div>
+
+          <div class="pm-grid">
+            <div class="pm-entry">
+              <div class="pm-entry-title" data-i18n="pmSymptomHead">Sintoma em Produção</div>
+              <p class="pm-entry-desc" data-i18n="pmSymptomBody">
+                Num deploy de microsserviço, os pods entraram imediatamente em CrashLoopBackOff. A hipótese preliminar da equipe recaía sobre o Redis, dependência compartilhada crítica.
               </p>
             </div>
 
-            <div class="pm-section">
-              <h4 data-i18n="pmInvestigationTitle">Isolation Method</h4>
-              <p data-i18n="pmInvestigationText">
-                Tested Redis independently: connection pool and latencies were completely green. Isolated outbound external dependencies: DNS resolved the authentication endpoint, but the TCP SYN on port 443 stalled with zero ACK response.
+            <div class="pm-entry">
+              <div class="pm-entry-title" data-i18n="pmMethodHead">Método de Isolamento</div>
+              <p class="pm-entry-desc" data-i18n="pmMethodBody">
+                Testes isolados descartaram o Redis (saudável). Testando as dependências externas individualmente, descobriu-se que o DNS resolvia o endpoint de autenticação, mas o handshake TCP SYN na porta 443 travava sem fechar.
               </p>
             </div>
 
-            <div class="pm-section">
-              <h4 data-i18n="pmRootCauseTitle">True Root Cause</h4>
-              <p data-i18n="pmRootCauseText">
-                Workload was scheduled onto a newly provisioned node pool and subnet where cloud security group egress rules had not yet been applied, silently blackholing outbound HTTPS traffic.
+            <div class="pm-entry">
+              <div class="pm-entry-title" data-i18n="pmRootHead">Causa Raiz Real</div>
+              <p class="pm-entry-desc" data-i18n="pmRootBody">
+                A aplicação havia sido alocada numa nova subnet e node pool da nuvem que ainda não possuíam as regras de segurança de saída (egress) liberadas na rede.
               </p>
             </div>
 
-            <div class="pm-section">
-              <h4 data-i18n="pmPreventionTitle">Resolution &amp; Safeguards</h4>
-              <p data-i18n="pmPreventionText">
-                Network rules were applied, recovering service in 45 minutes MTTR. Deployed immediate synthetic dependency monitoring, Pod NotReady alarms, and automated container restart rate tripwires.
+            <div class="pm-entry">
+              <div class="pm-entry-title" data-i18n="pmPreventionHead">Prevenção e Alarmística</div>
+              <p class="pm-entry-desc" data-i18n="pmPreventionBody">
+                Regras de rede liberadas com MTTR de 45 minutos. Implantação imediata de monitoramento sintético (Synthetic Monitoring) das dependências críticas e alarmes preventivos de Pods NotReady.
               </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Professional Experience Timeline -->
-    <section class="section-block" id="experience">
-      <div class="section-head">
-        <h2 class="section-heading" data-i18n="headingExperience">Work Experience</h2>
-        <p class="section-subheading" data-i18n="subheadingExperience">Career track in platform engineering, multicloud orchestration, and production SRE.</p>
-      </div>
-
-      <div class="experience-list">
-        <!-- 200dev / Elo -->
-        <article class="exp-entry">
-          <div class="exp-period">07/2025 — Present</div>
-          <div class="exp-content">
-            <h3 class="exp-role-title">Site Reliability Engineer — Specialist</h3>
-            <div class="exp-company">200dev &bull; Client: Elo (Payments — Project RISE) &bull; Remote</div>
-            <ul class="exp-details">
-              <li data-i18n="exp1D1">Responsible for infrastructure availability, resilience, and scale of a high-throughput microservices payments platform where downtime carries immediate financial impact.</li>
-              <li data-i18n="exp1D2">Conducted ingress-nginx to Istio Service Mesh migration (Gateway, HTTPRoute, DestinationRule) for fine-grained L7 traffic control and routing policies.</li>
-              <li data-i18n="exp1D3">Operated edge architecture and API management: Azure Front Door (global routing, WAF, load balancing), Azure APIM, and Azure CDN.</li>
-              <li data-i18n="exp1D4">Led infrastructure pipeline migration from Azure DevOps to GitHub Actions using reusable workflows and eliminating repository duplication.</li>
-              <li data-i18n="exp1D5">Evolved observability with Datadog APM, Prometheus, Grafana, Loki, and OpenTelemetry, establishing synthetic dependency monitoring and production SLOs.</li>
-            </ul>
-            <div class="exp-stack">Azure (AKS, APIM, Front Door, CDN, Cosmos DB, Redis) &bull; AWS (EKS) &bull; Terraform &bull; Istio &bull; ArgoCD &bull; GitHub Actions &bull; Kafka &bull; Datadog &bull; OpenTelemetry</div>
+      <!-- Section: Skills -->
+      <section id="skills" class="content-section">
+        <div class="mobile-section-header" data-i18n="navSkills">Competências</div>
+        <div class="skills-category-block">
+          <div class="skills-category-title" data-i18n="skillsCatObs">Observabilidade &amp; Monitoramento</div>
+          <div class="skills-list-row">
+            <span class="card-tag">Datadog (APM, Tracing, Synthetic)</span>
+            <span class="card-tag">OpenTelemetry</span>
+            <span class="card-tag">Prometheus</span>
+            <span class="card-tag">Grafana</span>
+            <span class="card-tag">Loki</span>
+            <span class="card-tag">Golden Signals</span>
+            <span class="card-tag">Alertas de Baixo Ruído</span>
           </div>
-        </article>
+        </div>
 
-        <!-- Provider IT / Elo -->
-        <article class="exp-entry">
-          <div class="exp-period">07/2023 — 07/2025</div>
-          <div class="exp-content">
-            <h3 class="exp-role-title">Site Reliability Engineer — Specialist</h3>
-            <div class="exp-company">Provider IT &bull; Client: Elo (Payments — Project RISE) &bull; Remote</div>
-            <ul class="exp-details">
-              <li data-i18n="exp2D1">End-to-end responsibility for infrastructure reliability, provisioning, and platform operations across four clouds: AWS (EKS), Azure (AKS), Google Cloud (GKE), and Huawei Cloud (CCE).</li>
-              <li data-i18n="exp2D2">Provisioned multi-cloud infrastructure with Terraform and established GitOps delivery via ArgoCD, making cluster state auditable, reproducible, and reversible.</li>
-              <li data-i18n="exp2D3">Operated production message streaming platforms: Apache Kafka, Amazon SQS, and Azure Service Bus.</li>
-              <li data-i18n="exp2D4">Advanced observability maturity with OpenTelemetry and Datadog, moving engineering from reactive monitoring to proactive degradation detection.</li>
-            </ul>
-            <div class="exp-stack">AWS (EKS) &bull; Azure (AKS) &bull; GCP (GKE) &bull; Huawei Cloud (CCE) &bull; Terraform &bull; ArgoCD &bull; Kafka &bull; Datadog &bull; Prometheus &bull; Python &bull; Go &bull; Shell</div>
+        <div class="skills-category-block">
+          <div class="skills-category-title" data-i18n="skillsCatOrch">Kubernetes &amp; Cloud Infrastructure</div>
+          <div class="skills-list-row">
+            <span class="card-tag">Kubernetes (EKS, AKS, GKE, CCE)</span>
+            <span class="card-tag">Istio Service Mesh</span>
+            <span class="card-tag">AWS ECS / Fargate</span>
+            <span class="card-tag">Azure Front Door &amp; APIM</span>
+            <span class="card-tag">VPC Peering &amp; Transit Gateway</span>
+            <span class="card-tag">Docker &amp; Helm</span>
           </div>
-        </article>
+        </div>
 
-        <!-- Cortex -->
-        <article class="exp-entry">
-          <div class="exp-period">04/2022 — 07/2023</div>
-          <div class="exp-content">
-            <h3 class="exp-role-title">Site Reliability Engineer — Specialist</h3>
-            <div class="exp-company">Cortex &bull; Remote</div>
-            <ul class="exp-details">
-              <li data-i18n="exp3D1">Designed and implemented Amazon ECS clusters for scalable container orchestration and application resilience.</li>
-              <li data-i18n="exp3D2">Built automated CI/CD deployment pipelines, standardizing delivery practices across software engineering teams.</li>
-              <li data-i18n="exp3D3">Executed automation and DevOps proofs-of-concept, including evaluation and adoption of Amazon EKS.</li>
-            </ul>
-            <div class="exp-stack">AWS (ECS, EKS, EC2, VPC, IAM, S3, CloudWatch) &bull; Terraform &bull; Docker &bull; CI/CD &bull; Python &bull; Shell</div>
+        <div class="skills-category-block">
+          <div class="skills-category-title" data-i18n="skillsCatIac">Infraestrutura como Código &amp; GitOps</div>
+          <div class="skills-list-row">
+            <span class="card-tag">Terraform (desde 2018)</span>
+            <span class="card-tag">Terragrunt</span>
+            <span class="card-tag">Crossplane</span>
+            <span class="card-tag">ArgoCD</span>
+            <span class="card-tag">GitHub Actions (OIDC)</span>
+            <span class="card-tag">Azure DevOps</span>
           </div>
-        </article>
+        </div>
 
-        <!-- Raízen -->
-        <article class="exp-entry">
-          <div class="exp-period">09/2021 — 03/2022</div>
-          <div class="exp-content">
-            <h3 class="exp-role-title">DevOps Engineer</h3>
-            <div class="exp-company">Raízen (Energy &amp; Biofuels) &bull; Remote</div>
-            <ul class="exp-details">
-              <li data-i18n="exp4D1">Evolved AWS infrastructure architecture, provisioning environments through Terraform modules and IaC pipelines.</li>
-              <li data-i18n="exp4D2">Managed Kubernetes workloads: deployments, autoscaling policies, security, and telemetry.</li>
-              <li data-i18n="exp4D3">Integrated SonarQube quality gates into delivery pipelines to block non-compliant code before production deployment.</li>
-            </ul>
-            <div class="exp-stack">AWS &bull; Terraform &bull; Kubernetes &bull; Docker &bull; SonarQube &bull; Git &bull; Python &bull; Shell</div>
+        <div class="skills-category-block">
+          <div class="skills-category-title" data-i18n="skillsCatRel">SRE, Redes &amp; Sistemas</div>
+          <div class="skills-list-row">
+            <span class="card-tag">SLIs, SLOs &amp; Error Budgets</span>
+            <span class="card-tag">Burn-rate Alerting</span>
+            <span class="card-tag">Redução de MTTD e MTTR</span>
+            <span class="card-tag">Linux Avançado &amp; Datacenter (8 anos)</span>
+            <span class="card-tag">DNS &amp; TCP/IP</span>
+            <span class="card-tag">Teleport</span>
           </div>
-        </article>
+        </div>
 
-        <!-- Albert Einstein Hospital -->
-        <article class="exp-entry">
-          <div class="exp-period">07/2020 — 09/2021</div>
-          <div class="exp-content">
-            <h3 class="exp-role-title">Senior DevOps Engineer</h3>
-            <div class="exp-company">Hospital Israelita Albert Einstein &bull; Remote</div>
-            <ul class="exp-details">
-              <li data-i18n="exp5D1">Operated mission-critical healthcare AWS infrastructure where downtime carries direct clinical and financial impact.</li>
-              <li data-i18n="exp5D2">Automated provisioning with Terraform and built continuous deployment pipelines in Azure DevOps and Jenkins.</li>
-              <li data-i18n="exp5D3">Implemented Teleport for auditable privileged infrastructure access, replacing direct bastion access with session recording.</li>
-              <li data-i18n="exp5D4">Executed AWS cost reduction initiatives through resource rightsizing and AWS Trusted Advisor recommendations.</li>
-            </ul>
-            <div class="exp-stack">AWS (EKS, EC2, VPC, Lambda, API Gateway, DynamoDB) &bull; Terraform &bull; Teleport &bull; Azure DevOps &bull; Jenkins &bull; Python &bull; Go</div>
+        <div class="skills-category-block">
+          <div class="skills-category-title" data-i18n="skillsCatLang">Linguagens &amp; Automação</div>
+          <div class="skills-list-row">
+            <span class="card-tag">Go (Golang)</span>
+            <span class="card-tag">Python</span>
+            <span class="card-tag">Shell / Bash Scripting</span>
+            <span class="card-tag">Model Context Protocol (MCP)</span>
+            <span class="card-tag">IA Operacional para SRE</span>
           </div>
-        </article>
+        </div>
+      </section>
 
-        <!-- Datacenter Foundations (UFPA & FADESP) -->
-        <article class="exp-entry">
-          <div class="exp-period">2010 — 2018</div>
-          <div class="exp-content">
-            <h3 class="exp-role-title">Datacenter &amp; Systems Administrator (8 Years Foundation)</h3>
-            <div class="exp-company">CTIC / UFPA &amp; FADESP &bull; Belém, PA</div>
-            <ul class="exp-details">
-              <li data-i18n="exp6D1">Administered bare-metal servers, hypervisors (Xen), and early containerization with Docker.</li>
-              <li data-i18n="exp6D2">Configured and diagnosed core internet services: DNS, TCP/IP routing, HTTP/HTTPS reverse proxies (Nginx, Apache), and LDAP directories.</li>
-              <li data-i18n="exp6D3">Designed and maintained monitoring systems for network and server infrastructure with Zabbix and Grafana.</li>
-            </ul>
-            <div class="exp-stack">Linux (Debian/CentOS) &bull; Docker &bull; Xen &bull; DNS &bull; TCP/IP &bull; Zabbix &bull; Grafana &bull; MySQL &bull; PostgreSQL &bull; Bash</div>
+      <!-- Section: Education & Certifications -->
+      <section id="education" class="content-section">
+        <div class="mobile-section-header" data-i18n="navEducation">Formação</div>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div class="edu-title" data-i18n="eduArch">Especialização em Arquitetura de Software</div>
+            <div class="edu-sub">Full Cycle &bull; System Design, DDD, Arquitetura Hexagonal, Event-Driven e Microsserviços</div>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Technical Competencies Matrix -->
-    <section class="section-block" id="skills">
-      <div class="section-head">
-        <h2 class="section-heading" data-i18n="headingSkills">Technical Capabilities</h2>
-        <p class="section-subheading" data-i18n="subheadingSkills">Production-tested tools, frameworks, and system engineering disciplines.</p>
-      </div>
-
-      <div class="skills-table">
-        <div class="skill-row">
-          <div class="skill-category-label" data-i18n="catObs">Observability &amp; Telemetry</div>
-          <div class="skill-category-items">Datadog (APM, Tracing, Synthetic Monitoring), Prometheus, Grafana, Loki, OpenTelemetry, AppDynamics, CloudWatch, Golden Signals.</div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-category-label" data-i18n="catOrch">Kubernetes &amp; Cloud</div>
-          <div class="skill-category-items">Kubernetes (EKS, AKS, GKE, Huawei CCE), Amazon ECS, Docker, Helm, Istio Service Mesh, Azure Front Door, APIM, AWS Transit Gateway, VPC Peering.</div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-category-label" data-i18n="catIac">Infrastructure as Code</div>
-          <div class="skill-category-items">Terraform (standard since 2018), Terragrunt, Crossplane, Ansible, Puppet, HCL, Module governance and versioning.</div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-category-label" data-i18n="catGitOps">Delivery &amp; GitOps</div>
-          <div class="skill-category-items">Argo CD, GitHub Actions (reusable workflows, AWS OIDC), Azure DevOps, Jenkins, Helm charts, SonarQube quality gates, Trivy.</div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-category-label" data-i18n="catRel">SRE &amp; Systems</div>
-          <div class="skill-category-items">SLIs, SLOs, Error Budgets, Multi-window burn-rate alerts, Blameless postmortems, MTTD/MTTR reduction, Linux internals, DNS, TCP/IP, Teleport.</div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-category-label" data-i18n="catLang">Languages &amp; Automation</div>
-          <div class="skill-category-items">Go (Golang), Python, Shell / Bash Scripting, Model Context Protocol (MCP), Operational AI for engineering.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education & Certifications -->
-    <section class="section-block" id="education">
-      <div class="section-head">
-        <h2 class="section-heading" data-i18n="headingEducation">Education &amp; Credentials</h2>
-        <p class="section-subheading" data-i18n="subheadingEducation">Formal engineering training and recognized cloud credentials.</p>
-      </div>
-
-      <div class="compact-list">
-        <div class="compact-item">
-          <div class="compact-title" data-i18n="certArchTitle">Software Architecture Specialization</div>
-          <div class="compact-desc">Full Cycle &bull; System Design, DDD, Clean Architecture, Hexagonal Architecture, Microservices &amp; Event-Driven.</div>
-        </div>
-
-        <div class="compact-item">
-          <div class="compact-title">GitOps Certified</div>
-          <div class="compact-desc">Codefresh &bull; Declarative continuous delivery and cluster state synchronization.</div>
-        </div>
-
-        <div class="compact-item">
-          <div class="compact-title">AWS Well-Architected Proficient</div>
-          <div class="compact-desc">Amazon Web Services &bull; Reliability, Security, Operational Excellence &amp; Cost Optimization.</div>
-        </div>
-
-        <div class="compact-item">
-          <div class="compact-title">Amazon ECS &bull; Docker on AWS</div>
-          <div class="compact-desc">Amazon Web Services &bull; Container orchestration and task networking.</div>
-        </div>
-
-        <div class="compact-item">
-          <div class="compact-title">Amazon API Gateway Architecture</div>
-          <div class="compact-desc">Amazon Web Services &bull; REST/HTTP APIs, throttling, authorizers, and integration patterns.</div>
-        </div>
-
-        <div class="compact-item">
-          <div class="compact-title" data-i18n="certIfamTitle">Computer Science Diploma</div>
-          <div class="compact-desc">IFAM &bull; Instituto Federal de Educação, Ciência e Tecnologia do Amazonas.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-      <div class="contact-inner">
-        <div class="contact-text">
-          <h3 data-i18n="contactHeading">Let's connect</h3>
-          <p data-i18n="contactSub">Open to discussions on Kubernetes, platform engineering, GitOps, and SRE reliability.</p>
-        </div>
-
-        <div class="contact-links-row">
-          <div class="email-pill">
-            <span>agnaldomarinho7@gmail.com</span>
-            <button type="button" class="copy-button" id="copy-email-btn" aria-label="Copy email" title="Copy email address">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-            </button>
+          <div class="edu-item">
+            <div class="edu-title">GitOps Certified</div>
+            <div class="edu-sub">Codefresh &bull; Padrões do Argo Project e entrega contínua declarativa</div>
           </div>
-          <a href="https://www.linkedin.com/in/agnaldom" target="_blank" rel="noopener noreferrer" class="action-link">LinkedIn</a>
-          <a href="https://github.com/agnaldom" target="_blank" rel="noopener noreferrer" class="action-link">GitHub</a>
+          <div class="edu-item">
+            <div class="edu-title">AWS Well-Architected Proficient</div>
+            <div class="edu-sub">Amazon Web Services &bull; Confiabilidade, Segurança, Performance e Custos</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Amazon ECS &bull; Docker na AWS</div>
+            <div class="edu-sub">Amazon Web Services &bull; Orquestração de containers e dimensionamento de tarefas</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Amazon API Gateway Architecture</div>
+            <div class="edu-sub">Amazon Web Services &bull; Gerenciamento de APIs REST e HTTP</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title" data-i18n="eduIfam">Técnico em Informática</div>
+            <div class="edu-sub">Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM)</div>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <!-- Clean Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>Agnaldo Marinho &bull; SRE &amp; Platform Engineer</span>
-      <span id="footer-year">&copy; 2026</span>
+      <!-- Footer Note (Brittany Chiang style tribute) -->
+      <footer class="site-footer-note">
+        <p data-i18n="footerNote">
+          Desenvolvido com foco em tipografia limpa e sem dependências pesadas. Construído em HTML5, CSS moderno e JavaScript puro. Hospedado no GitHub Pages. Design inspirado na estética de Brittany Chiang.
+        </p>
+      </footer>
     </div>
-  </footer>
+  </div>
 
-  <!-- Toast -->
+  <!-- Toast Notification -->
   <div id="toast" class="toast" role="status" aria-live="polite">
-    <span data-i18n="toastCopied">Copied to clipboard</span>
+    <span data-i18n="toastCopied">E-mail copiado para a área de transferência</span>
   </div>
 
   <script src="assets/js/main.js"></script>
