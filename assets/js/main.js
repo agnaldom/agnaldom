@@ -1,26 +1,24 @@
 /**
- * Agnaldo Marinho - SRE / Platform Engineer
- * Interactive portfolio scripts: Theme toggle, Language switcher, SRE Error Budget Calculator
+ * Agnaldo Marinho — SRE & Platform Engineer
+ * Minimalist, resilient portfolio logic (Theme toggle, Language switcher, Clipboard)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initLanguage();
-  initCalculator();
   initEmailCopy();
-  initMobileNav();
   initFooterYear();
 });
 
 function initFooterYear() {
-  const yearEl = document.getElementById('current-year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
+  const el = document.getElementById('footer-year');
+  if (el) {
+    el.textContent = `© ${new Date().getFullYear()}`;
   }
 }
 
 /* ==========================================================================
-   Theme Management (Following Modern Web Guidance)
+   Theme Management (Following W3C & Modern Web Standards)
    ========================================================================== */
 function initTheme() {
   const metaColorScheme = document.querySelector('meta[name="color-scheme"]');
@@ -46,8 +44,8 @@ function initTheme() {
       const icon = themeToggle.querySelector('.theme-icon');
       if (icon) {
         icon.innerHTML = resolvedTheme === 'dark'
-          ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>`
-          : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+          ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>`
+          : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
       }
     }
 
@@ -82,325 +80,212 @@ function initTheme() {
    ========================================================================== */
 const translations = {
   en: {
-    statusText: 'All Systems Operational • 99.99%',
-    navAbout: 'About',
-    navProjects: 'Projects & OSS',
-    navCaseStudy: 'Root Cause Case',
-    navSkills: 'Skills & Stack',
-    navExperience: 'Platform Work',
-    navCalculator: 'SLO Calculator',
-    navCerts: 'Certifications',
+    navProjects: 'Projects',
+    navIncident: 'Postmortem',
+    navExperience: 'Experience',
+    navSkills: 'Stack',
+    navEducation: 'Education',
     navContact: 'Contact',
 
-    heroEyebrow: '16 Years in IT • 8+ Years SRE & Cloud Platforms',
-    heroRemote: '100% Remote (Brazil) • English & Spanish Working Proficiency',
-    heroTitle: 'Resilient platforms that survive when production disagrees with the plan.',
-    heroSubtitle: 'SRE & DevOps Specialist operating Kubernetes across AWS, Azure, GCP and Huawei Cloud. My core foundation is observability, troubleshooting, and production-tested <strong>SLIs, SLOs and error budgets that hold up under pressure.</strong>',
-    sectorsLabel: 'Production experience in environments where downtime has direct financial & clinical cost:',
-    sectorPay: 'Payments & Acquiring: <strong>Elo & Redecard</strong>',
-    sectorHealth: 'Critical Healthcare: <strong>Albert Einstein Hospital</strong>',
-    sectorEnergy: 'Energy & Commodities: <strong>Raízen</strong>',
-    sectorInd: 'Manufacturing & Steel: <strong>Gerdau</strong>',
+    heroLocation: 'Navegantes, SC — Brazil • 100% Remote • English (B2) & Spanish',
+    heroRoleTitle: 'DevOps & SRE Specialist • Observability • Root Cause Analysis • Kubernetes • Multi-Cloud',
+    heroBio1: '16 years in IT, with 8 years building and operating production platforms where downtime has direct financial and clinical cost — payments (<strong>Elo, Redecard</strong>), critical healthcare (<strong>Albert Einstein Hospital</strong>), energy (<strong>Raízen</strong>), and manufacturing (<strong>Gerdau</strong>).',
+    heroBio2: 'My foundation is observability and deep troubleshooting: running Datadog, Prometheus, Grafana, Loki, and OpenTelemetry to catch degradation before users notice, defending <strong>SLIs, SLOs, and error budgets</strong> that hold up when production disagrees with the plan. Before the cloud, I spent 8 years in Linux administration, datacenters, and networking.',
+    actionContact: 'Get in Touch',
 
-    ctaContact: 'Get in Touch',
-    ctaProjects: 'View Autonomous Projects',
-    ctaCalc: 'Calculate Error Budget',
+    headingProjects: 'Selected Projects',
+    subheadingProjects: 'Open-source platform tooling, Kubernetes facts for AI agents, and SRE frameworks.',
 
-    metricYearsIt: 'Years in IT',
-    metricYearsItDesc: '8y Datacenter/Linux + 8y SRE',
-    metricYearsPlatform: 'Years Platform/SRE',
-    metricYearsPlatformDesc: 'Fintechs, health & multicloud',
-    metricClouds: 'Major Clouds',
-    metricCloudsDesc: 'AWS, Azure, GCP & Huawei Cloud',
-    metricSloFocus: 'SLO-Driven SRE',
-    metricSloFocusDesc: 'Burn-rate alerts & error budgets',
+    crosswatcCategory: 'Developer Platform • GitOps Lifecycle',
+    crosswatcSummary: 'Developer Experience and Infrastructure Lifecycle Management platform operating over GitOps (GitHub → Argo CD → Crossplane → Cloud). Provides self-service cloud abstractions without exposing raw cluster manifests to product developers.',
+    crosswatcPoint1: 'Engineered in Go (Gin REST API + background reconciler/discovery workers) with a Next.js web application.',
+    crosswatcPoint2: 'Orchestrates multi-cloud resource provisioning through Crossplane compositions and Argo CD sync cycles.',
+    crosswatcPoint3: 'Built with PostgreSQL schema migrations, health adapters, and production Helm manifests.',
 
-    // Featured Projects
-    ossTag: 'Engineering & Open Source',
-    ossTitle: 'Autonomous Platforms & AI Tools',
-    ossDesc: 'Production-ready architectures, Developer Platforms (IDP), and AI systems for Kubernetes operations.',
-    
-    // crosswatc
-    crosswatcType: 'DevX & GitOps Platform',
-    crosswatcTitle: 'crosswatc',
-    crosswatcTagline: 'Developer Experience & Lifecycle Management over GitOps (GitHub → Argo CD → Crossplane → Cloud)',
-    crosswatcDesc: 'An internal developer platform (IDP) providing self-service cloud infrastructure abstractions. Built with a Go Gin API and reconciliation workers communicating with Crossplane and ArgoCD, paired with a modern Next.js UI.',
-    crosswatcH1: 'Multi-service architecture: Next.js UI, Go Gin API, and autonomous Go reconciler workers.',
-    crosswatcH2: 'Direct integration with Argo CD and Crossplane for GitOps-driven cloud resource provisioning.',
-    crosswatcH3: 'PostgreSQL migrations and Helm manifests ready for zero-downtime cluster rollouts.',
+    mcpCategory: 'Model Context Protocol • AI Ops',
+    mcpSummary: 'A strictly read-only Model Context Protocol (MCP) server in Go that exposes deterministic, sanitised Kubernetes facts to AI agents. Designed specifically to remove common failure modes of raw kubectl queries in autonomous investigations.',
+    mcpPoint1: 'Eliminates the "ambiguity of silence": explicitly declares the time window it provably covers vs kube-apiserver --event-ttl.',
+    mcpPoint2: 'Delivers rule-based observations with transparent thresholds rather than subjective opinions.',
+    mcpPoint3: 'Guaranteed read-only architecture using SelfSubjectAccessReview authorization checks; zero mutable state.',
 
-    // mcp-k8s
-    mcpType: 'AI Ops / Kubernetes Tooling',
-    mcpTitle: 'mcp-k8s',
-    mcpTagline: 'Deterministic, Read-Only Model Context Protocol (MCP) Server in Go for Kubernetes Facts',
-    mcpDesc: 'Empowers AI coding assistants and autonomous agents with clean, sanitised, structured Kubernetes cluster facts without hallucinations or ambiguous assumptions.',
-    mcpH1: 'Eliminates ambiguity: explicitly declares covered time window vs kube-apiserver --event-ttl.',
-    mcpH2: 'Replaces subjective judgment with raw observed data and declared deterministic rules.',
-    mcpH3: 'Strictly read-only with explicit SelfSubjectAccessReview permission checking; zero mutation risks.',
+    sreiaCategory: 'Living Book • Hands-on Operational Labs',
+    sreiaSummary: 'An open-source living book and runnable laboratory suite for SREs and platform engineers implementing operational AI with executable code, local runtime clusters, and GitHub Actions pipelines.',
+    sreiaPoint1: 'Includes an automated local development lab (Kind cluster, Prometheus, Grafana, Loki, and controlled chaos apps).',
+    sreiaPoint2: 'Vector indexing with Qdrant for semantic runbook retrieval and incident response playbooks.',
+    sreiaPoint3: 'Focuses on critical verification of AI-generated IaC and pipelines before production deployment.',
 
-    // sre-ia-ops
-    sreiaType: 'Living Book & Operational Labs',
-    sreiaTitle: 'sre-ia-ops (SRE AI Revolution)',
-    sreiaTagline: 'Living Book & Runnable Laboratories for Operational AI in Platform Engineering',
-    sreiaDesc: 'An open-source living book and hands-on laboratory environment for SREs and DevOps teams implementing operational AI with real code, runnable labs in Python, and GitHub Actions workflows.',
-    sreiaH1: 'Automated local testing lab: Kind cluster equipped with Prometheus, Grafana, Loki, and chaos scenarios.',
-    sreiaH2: 'Semantic vector search integration with Qdrant for incident runbooks and operational troubleshooting.',
-    sreiaH3: 'Executes repeatable automation recipes for day-one operational readiness and incident response.',
+    sloCategory: 'Reliability • SRE Tooling',
+    sloSummary: 'SLI definitions, error budget formulas, and multi-window burn-rate Prometheus rules ready to drop into a Kubernetes cluster to eliminate threshold alert fatigue.',
 
-    // Incident Troubleshooting
-    tsTag: 'Root Cause Analysis Case Study',
-    tsTitle: 'The 45-Minute MTTR Case: TCP 443 Handshake Isolation',
-    tsDesc: 'A representative production postmortem demonstrating methodical troubleshooting and blameless prevention.',
-    tsBadge: 'Real Production Incident • 45m MTTR',
-    tsStep1Title: 'The Symptom',
-    tsStep1Desc: 'Following a production rollout, multiple microservice pods entered an immediate CrashLoopBackOff. The obvious culprit was Redis, a shared critical dependency.',
-    tsStep2Title: 'The Investigation',
-    tsStep2Desc: 'Redis health checks were completely green. Isolating dependencies one by one revealed DNS resolved the auth endpoint, but TCP SYN on port 443 stalled with no ACK.',
-    tsStep3Title: 'The Root Cause',
-    tsStep3Desc: 'The service had been scheduled on a brand new node pool and subnet where cloud network security egress rules had not yet been provisioned.',
-    tsStep4Title: 'Prevention & Alarms',
-    tsStep4Desc: 'Egress rules applied within 45 minutes MTTR. Deployed immediate synthetic dependency monitors, Pods NotReady alerts, and container restart rate tripwires to prevent regression.',
+    headingIncident: 'Root Cause Analysis Case Study',
+    subheadingIncident: 'Documented production incident resolution showing methodical isolation and MTTR reduction.',
+    pmHeaderTitle: 'Postmortem: Resolving TCP 443 Handshake Stall in Kubernetes',
+    pmHeaderBadge: 'MTTR: 45 min • Severity: Critical',
+    pmSymptomTitle: 'Incident Symptom',
+    pmSymptomText: 'Following a production microservice release, pods immediately fell into a CrashLoopBackOff restart cycle. The default team assumption was Redis failure, a shared critical dependency.',
+    pmInvestigationTitle: 'Isolation Method',
+    pmInvestigationText: 'Tested Redis independently: connection pool and latencies were completely green. Isolated outbound external dependencies: DNS resolved the authentication endpoint, but the TCP SYN on port 443 stalled with zero ACK response.',
+    pmRootCauseTitle: 'True Root Cause',
+    pmRootCauseText: 'Workload was scheduled onto a newly provisioned node pool and subnet where cloud security group egress rules had not yet been applied, silently blackholing outbound HTTPS traffic.',
+    pmPreventionTitle: 'Resolution & Safeguards',
+    pmPreventionText: 'Network rules were applied, recovering service in 45 minutes MTTR. Deployed immediate synthetic dependency monitoring, Pod NotReady alarms, and automated container restart rate tripwires.',
 
-    // Skills Matrix
-    skillsTag: 'Capabilities & Tooling',
-    skillsTitle: 'What I Work With Daily',
-    skillsDesc: 'Production-tested tools and frameworks for zero-downtime platforms and automated operations.',
-    catOrch: 'Orchestration & Compute',
-    catIac: 'Infrastructure as Code',
+    headingExperience: 'Work Experience',
+    subheadingExperience: 'Career track in platform engineering, multicloud orchestration, and production SRE.',
+    exp1D1: 'Responsible for infrastructure availability, resilience, and scale of a high-throughput microservices payments platform where downtime carries immediate financial impact.',
+    exp1D2: 'Conducted ingress-nginx to Istio Service Mesh migration (Gateway, HTTPRoute, DestinationRule) for fine-grained L7 traffic control and routing policies.',
+    exp1D3: 'Operated edge architecture and API management: Azure Front Door (global routing, WAF, load balancing), Azure APIM, and Azure CDN.',
+    exp1D4: 'Led infrastructure pipeline migration from Azure DevOps to GitHub Actions using reusable workflows and eliminating repository duplication.',
+    exp1D5: 'Evolved observability with Datadog APM, Prometheus, Grafana, Loki, and OpenTelemetry, establishing synthetic dependency monitoring and production SLOs.',
+
+    exp2D1: 'End-to-end responsibility for infrastructure reliability, provisioning, and platform operations across four clouds: AWS (EKS), Azure (AKS), Google Cloud (GKE), and Huawei Cloud (CCE).',
+    exp2D2: 'Provisioned multi-cloud infrastructure with Terraform and established GitOps delivery via ArgoCD, making cluster state auditable, reproducible, and reversible.',
+    exp2D3: 'Operated production message streaming platforms: Apache Kafka, Amazon SQS, and Azure Service Bus.',
+    exp2D4: 'Advanced observability maturity with OpenTelemetry and Datadog, moving engineering from reactive monitoring to proactive degradation detection.',
+
+    exp3D1: 'Designed and implemented Amazon ECS clusters for scalable container orchestration and application resilience.',
+    exp3D2: 'Built automated CI/CD deployment pipelines, standardizing delivery practices across software engineering teams.',
+    exp3D3: 'Executed automation and DevOps proofs-of-concept, including evaluation and adoption of Amazon EKS.',
+
+    exp4D1: 'Evolved AWS infrastructure architecture, provisioning environments through Terraform modules and IaC pipelines.',
+    exp4D2: 'Managed Kubernetes workloads: deployments, autoscaling policies, security, and telemetry.',
+    exp4D3: 'Integrated SonarQube quality gates into delivery pipelines to block non-compliant code before production deployment.',
+
+    exp5D1: 'Operated mission-critical healthcare AWS infrastructure where downtime carries direct clinical and financial impact.',
+    exp5D2: 'Automated provisioning with Terraform and built continuous deployment pipelines in Azure DevOps and Jenkins.',
+    exp5D3: 'Implemented Teleport for auditable privileged infrastructure access, replacing direct bastion access with session recording.',
+    exp5D4: 'Executed AWS cost reduction initiatives through resource rightsizing and AWS Trusted Advisor recommendations.',
+
+    exp6D1: 'Administered bare-metal servers, hypervisors (Xen), and early containerization with Docker.',
+    exp6D2: 'Configured and diagnosed core internet services: DNS, TCP/IP routing, HTTP/HTTPS reverse proxies (Nginx, Apache), and LDAP directories.',
+    exp6D3: 'Designed and maintained monitoring systems for network and server infrastructure with Zabbix and Grafana.',
+
+    headingSkills: 'Technical Capabilities',
+    subheadingSkills: 'Production-tested tools, frameworks, and system engineering disciplines.',
     catObs: 'Observability & Telemetry',
-    catDel: 'Continuous Delivery & GitOps',
-    catRel: 'Reliability & SRE Practice',
+    catOrch: 'Kubernetes & Cloud',
+    catIac: 'Infrastructure as Code',
+    catGitOps: 'Delivery & GitOps',
+    catRel: 'SRE & Systems',
     catLang: 'Languages & Automation',
 
-    // Platform Work Experience
-    expTag: 'Real-World Impact',
-    expTitle: 'Production Platform Engineering',
-    expDesc: 'Architecture, high-throughput migrations, and reliability engineering in demanding production environments.',
-    case1Title: 'High-Throughput Payments Platform (Multi-Cloud K8s @ Elo)',
-    case1Summary: 'Engineered and operated multi-cluster Kubernetes infrastructure running mission-critical payment services across clouds with automated failover, Istio Service Mesh, and zero-downtime rolling deploys.',
-    case1B1: 'Multi-cluster Kubernetes across AWS (EKS), Azure (AKS), GCP (GKE), and Huawei Cloud (CCE).',
-    case1B2: 'Migrated ingress-nginx to Istio Service Mesh (Gateway, HTTPRoute, DestinationRule) for fine-grained L7 traffic control.',
-    case1B3: 'Managed border routing & security via Azure Front Door (WAF, global routing), Azure APIM, and Azure CDN.',
+    headingEducation: 'Education & Credentials',
+    subheadingEducation: 'Formal engineering training and recognized cloud credentials.',
+    certArchTitle: 'Software Architecture Specialization',
+    certIfamTitle: 'Computer Science Diploma',
 
-    case2Title: 'Enterprise Delivery Migration (Azure DevOps to GitHub Actions)',
-    case2Summary: 'Architected and executed full platform migration from legacy Azure DevOps pipelines to modern GitHub Actions with reusable security workflows and GitOps delivery via ArgoCD.',
-    case2B1: 'Over 50+ services migrated with zero developer workflow interruption.',
-    case2B2: 'Standardized security scanning (SAST, Trivy container scanning, secret detection) and AWS OIDC integration.',
-    case2B3: 'ArgoCD GitOps deployment pattern with automated drift detection and instant rollback.',
-
-    case3Title: 'Mission-Critical Healthcare AWS Infrastructure (@ Albert Einstein)',
-    case3Summary: 'Operated critical AWS infrastructure where downtime has direct clinical and financial implications, automating compliance and security access.',
-    case3B1: 'Deployed Teleport for privileged, auditable session access to production servers, replacing direct bastions.',
-    case3B2: 'Automated multicloud provisioning with Terraform modules and implemented rightsizing with AWS Trusted Advisor.',
-    case3B3: 'Built internal automation CLI tooling in Python, Go, and Shell for operational tasks.',
-
-    case4Title: '8 Years of Linux & Datacenter Foundations (UFPA & FADESP)',
-    case4Summary: 'Deep foundational background in systems engineering, virtualization, and networking before cloud computing.',
-    case4B1: 'Managed bare-metal hypervisors (Xen), container virtualization with Docker, and enterprise storage.',
-    case4B2: 'Configured core networking: DNS, TCP/IP, BGP/switching, TLS handshakes, and reverse proxies (Nginx, Apache).',
-    case4B3: 'Built custom network and server monitoring systems using Zabbix, Grafana, and Shell automation.',
-
-    // SRE Calculator
-    calcTag: 'Interactive Engineering Tool',
-    calcTitle: 'SRE Error Budget & Downtime Calculator',
-    calcDesc: 'Experiment with availability targets and inspect real allowed downtime and burn-rate numbers.',
-    calcLabelSlo: 'Select Target SLO (%):',
-    calcLabelWindow: 'Time Window:',
-    calcWindow30: '30 Days (Rolling Month)',
-    calcWindow90: '90 Days (Quarter)',
-    calcWindow365: '365 Days (Annual)',
-    calcResAllowed: 'Allowed Downtime',
-    calcResTotalReq: 'Error Budget (30d)',
-    calcResFastBurn: 'Fast-Burn Alert (14.4x)',
-    calcInsight: '<strong>SRE Insight:</strong> A 99.9% SLO allows ~43 mins of downtime per month. Rather than alerting on single spike minutes, a 14.4x burn-rate alert triggers only when 2% of your monthly budget burns in 1 hour — virtually eliminating false positives.',
-
-    // Certifications & Education
-    certsTag: 'Credentials & Continuous Learning',
-    certsTitle: 'Certifications & Architecture Education',
-    certsDesc: 'Formal training in distributed software architecture, cloud platforms, and GitOps practices.',
-    certGitOps: 'GitOps Certified',
-    certGitOpsDesc: 'Codefresh / Argo Project standards & declarative delivery',
-    certAwsWell: 'AWS Well-Architected Proficient',
-    certAwsWellDesc: 'Reliability, Security, Performance & Cost Optimization',
-    certEcs: 'Amazon ECS & Docker on AWS',
-    certEcsDesc: 'Container orchestration, networking & task management',
-    certApiGw: 'Amazon API Gateway Architecture',
-    certApiGwDesc: 'REST & HTTP API management, throttling & security',
-    certArch: 'Software Architecture Specialization',
-    certArchDesc: 'Full Cycle (DDD, Clean Arch, Hexagonal, Event-Driven & Microservices)',
-    certTech: 'Computer Science Diploma (IFAM)',
-    certTechDesc: 'Instituto Federal de Educação, Ciência e Tecnologia do Amazonas',
-
-    contactTitle: 'Let\'s Discuss Platform Engineering & Reliability',
-    contactDesc: 'Always interested in discussions around Kubernetes, Terraform scale, observability architectures, and production reliability.',
-    copyEmail: 'Copy',
-    copiedText: 'Copied to clipboard!',
-    footerText: 'Built with semantic HTML5, modern CSS & JS • Zero dependencies • Deployed via GitHub Pages'
+    contactHeading: "Let's connect",
+    contactSub: 'Open to discussions on Kubernetes, platform engineering, GitOps, and SRE reliability.',
+    toastCopied: 'Copied to clipboard'
   },
+
   pt: {
-    statusText: 'Sistemas Operacionais • 99.99%',
-    navAbout: 'Sobre',
-    navProjects: 'Projetos & OSS',
-    navCaseStudy: 'Caso de Causa Raiz',
-    navSkills: 'Skills & Stack',
-    navExperience: 'Plataforma',
-    navCalculator: 'Calculadora SLO',
-    navCerts: 'Certificações',
+    navProjects: 'Projetos',
+    navIncident: 'Postmortem',
+    navExperience: 'Experiência',
+    navSkills: 'Stack',
+    navEducation: 'Formação',
     navContact: 'Contato',
 
-    heroEyebrow: '16 Anos em TI • 8+ Anos em Plataformas SRE & Cloud',
-    heroRemote: '100% Remoto (Navegantes/SC) • Inglês e Espanhol Profissional',
-    heroTitle: 'Plataformas resilientes que suportam quando a produção discorda do plano.',
-    heroSubtitle: 'Especialista DevOps / SRE operando Kubernetes em AWS, Azure, GCP e Huawei Cloud. Minha base é observabilidade, troubleshooting de causa raiz e <strong>SLIs, SLOs e orçamentos de erro que resistem à pressão em produção.</strong>',
-    sectorsLabel: 'Experiência em ambientes onde indisponibilidade tem custo financeiro e clínico direto:',
-    sectorPay: 'Meios de Pagamento & Adquirência: <strong>Elo & Redecard</strong>',
-    sectorHealth: 'Saúde de Missão Crítica: <strong>Hospital Albert Einstein</strong>',
-    sectorEnergy: 'Energia & Commodities: <strong>Raízen</strong>',
-    sectorInd: 'Indústria & Siderurgia: <strong>Gerdau</strong>',
+    heroLocation: 'Navegantes, SC — Brasil • 100% Remoto • Inglês (B2) e Espanhol',
+    heroRoleTitle: 'Especialista DevOps & SRE • Observabilidade • Causa Raiz • Kubernetes • Multi-Cloud',
+    heroBio1: '16 anos em TI, sendo 8 anos dedicados a SRE, DevOps e Cloud em ambientes onde indisponibilidade tem custo financeiro e clínico direto — meios de pagamento (<strong>Elo, Redecard</strong>), saúde de missão crítica (<strong>Hospital Israelita Albert Einstein</strong>), energia (<strong>Raízen</strong>) e indústria (<strong>Gerdau</strong>).',
+    heroBio2: 'Minha base é observabilidade e troubleshooting profundo: operando Datadog, Prometheus, Grafana, Loki e OpenTelemetry para identificar degradação antes que o usuário perceba, sustentando <strong>SLIs, SLOs e error budgets</strong> que resistem à pressão em produção. Antes da nuvem, foram 8 anos de administração de Linux, redes e datacenter.',
+    actionContact: 'Entrar em Contato',
 
-    ctaContact: 'Fale Comigo',
-    ctaProjects: 'Ver Projetos Autorais',
-    ctaCalc: 'Calcular Error Budget',
+    headingProjects: 'Projetos Autorais & Open Source',
+    subheadingProjects: 'Ferramental de plataforma interna, fatos de Kubernetes para IA e frameworks de SRE.',
 
-    metricYearsIt: 'Anos em TI',
-    metricYearsItDesc: '8a Datacenter/Linux + 8a SRE',
-    metricYearsPlatform: 'Anos em Plataforma/SRE',
-    metricYearsPlatformDesc: 'Fintechs, saúde e multicloud',
-    metricClouds: 'Nuvens Principais',
-    metricCloudsDesc: 'AWS, Azure, GCP e Huawei Cloud',
-    metricSloFocus: 'SRE Guiado por SLO',
-    metricSloFocusDesc: 'Alertas por burn-rate e error budgets',
+    crosswatcCategory: 'Plataforma DevX • Ciclo de Vida GitOps',
+    crosswatcSummary: 'Plataforma de Developer Experience e Gestão de Ciclo de Vida de Infraestrutura sobre GitOps (GitHub → Argo CD → Crossplane → Cloud). Disponibiliza abstrações em autosserviço sem expor manifests brutos para times de produto.',
+    crosswatcPoint1: 'Construído em Go (API REST em Gin + workers de reconciliação e descoberta em background) e interface em Next.js.',
+    crosswatcPoint2: 'Orquestra provisionamento multi-cloud via composições do Crossplane e sincronização contínua com Argo CD.',
+    crosswatcPoint3: 'Inclui migrations PostgreSQL, adaptadores de health check e manifests Helm prontos para produção.',
 
-    // Featured Projects
-    ossTag: 'Engenharia & Código Aberto',
-    ossTitle: 'Plataformas Autorais & Ferramental de IA',
-    ossDesc: 'Arquiteturas prontas para produção, plataformas internas de desenvolvedor (IDP) e sistemas de IA para operações de Kubernetes.',
+    mcpCategory: 'Model Context Protocol • AIOps',
+    mcpSummary: 'Servidor Model Context Protocol (MCP) em Go estritamente read-only que expõe fatos estruturados e higienizados de Kubernetes para agentes de IA, eliminando as falhas clássicas de consultas cegas via kubectl.',
+    mcpPoint1: 'Elimina a "ambiguidade do silêncio": declara explicitamente a janela temporal coberta vs a expiração de eventos (--event-ttl).',
+    mcpPoint2: 'Entrega observações baseadas em regras com limites transparentes, no lugar de opiniões subjetivas.',
+    mcpPoint3: 'Arquitetura 100% read-only com checagem de permissões via SelfSubjectAccessReview; zero mutação acidental.',
 
-    // crosswatc
-    crosswatcType: 'Plataforma DevX & GitOps',
-    crosswatcTitle: 'crosswatc',
-    crosswatcTagline: 'Developer Experience e Gestão de Ciclo de Vida sobre GitOps (GitHub → Argo CD → Crossplane → Cloud)',
-    crosswatcDesc: 'Uma plataforma interna de desenvolvimento (IDP) que oferece abstrações de infraestrutura como autosserviço. Construída com API em Go (Gin), workers de reconciliação orquestrando Crossplane e ArgoCD, e frontend moderno em Next.js.',
-    crosswatcH1: 'Arquitetura multi-serviço: UI Next.js, API Go Gin e workers autônomos de reconciliação em Go.',
-    crosswatcH2: 'Integração direta com Argo CD e Crossplane para provisionamento GitOps em nuvens públicas.',
-    crosswatcH3: 'Migrations PostgreSQL e manifests Helm preparados para ambientes corporativos resilientes.',
+    sreiaCategory: 'Livro Vivo • Labs Operacionais',
+    sreiaSummary: 'Livro vivo em código aberto e suíte de laboratórios práticos para SREs e times de plataforma implementarem IA operacional com código real, clusters locais e pipelines no GitHub Actions.',
+    sreiaPoint1: 'Contém laboratório de desenvolvimento local reproduzível (cluster Kind com Prometheus, Grafana, Loki e apps para teste de caos).',
+    sreiaPoint2: 'Indexação vetorial com Qdrant para busca semântica em runbooks operacionais e playbooks de incidentes.',
+    sreiaPoint3: 'Foco na verificação e validação crítica de IaC e pipelines gerados por IA antes de aplicar em produção.',
 
-    // mcp-k8s
-    mcpType: 'IA Ops / Ferramental Kubernetes',
-    mcpTitle: 'mcp-k8s',
-    mcpTagline: 'Servidor Model Context Protocol (MCP) em Go Read-Only para Fatos de Kubernetes sem Alucinação',
-    mcpDesc: 'Alimenta assistentes e agentes autônomos de IA com dados estruturados, higienizados e auditáveis do cluster Kubernetes, prevenindo conclusões falsas em investigações operacionais.',
-    mcpH1: 'Elimina ambiguidade: declara a janela temporal real coberta vs expiração do --event-ttl do k8s.',
-    mcpH2: 'Substitui opiniões vagas ("restart alto") por dados brutos e regras determinísticas declaradas.',
-    mcpH3: 'Estritamente read-only com validação via SelfSubjectAccessReview; zero risco de mutação acidental.',
+    sloCategory: 'Confiabilidade • Ferramental SRE',
+    sloSummary: 'Definições de SLIs, matemática de error budgets e regras de taxa de queima multi-janela para Prometheus, prontas para eliminar fadiga de alertas em clusters Kubernetes.',
 
-    // sre-ia-ops
-    sreiaType: 'Living Book & Labs Práticos',
-    sreiaTitle: 'sre-ia-ops (SRE AI Revolution)',
-    sreiaTagline: 'Livro Vivo e Laboratórios Executáveis para IA Operacional em Engenharia de Plataforma',
-    sreiaDesc: 'Um livro aberto e laboratório prático para times de SRE e DevOps implementarem IA operacional com código real, laboratórios executáveis em Python e fluxos de automação nativos do GitHub Actions.',
-    sreiaH1: 'Ambiente local completo: cluster Kind com Prometheus, Grafana, Loki e cenários de caos aplicados.',
-    sreiaH2: 'Busca vetorial com Qdrant para runbooks operacionais e troubleshooting automatizado.',
-    sreiaH3: 'Receitas de automação para acelerar o onboarding operacional e a resposta a incidentes críticos.',
+    headingIncident: 'Estudo de Caso de Causa Raiz',
+    subheadingIncident: 'Resolução documentada de incidente em produção demonstrando isolamento metódico e redução de MTTR.',
+    pmHeaderTitle: 'Postmortem: Isolando o Travamento de Handshake TCP 443 no Kubernetes',
+    pmHeaderBadge: 'MTTR: 45 min • Severidade: Crítica',
+    pmSymptomTitle: 'O Sintoma',
+    pmSymptomText: 'Num deploy de microsserviço em produção, os pods entraram imediatamente em loop de restart (CrashLoopBackOff). A hipótese preliminar da equipe apontava falha no Redis, dependência crítica compartilhada.',
+    pmInvestigationTitle: 'Método de Isolamento',
+    pmInvestigationText: 'Redis testado individualmente: pool de conexões e latências normais. Isolando as dependências externas uma a uma: o DNS resolvia o serviço de autenticação, mas o TCP SYN na porta 443 travava sem receber ACK.',
+    pmRootCauseTitle: 'Causa Raiz Real',
+    pmRootCauseText: 'A aplicação havia sido alocada em um node pool e subnet novos onde as regras de segurança de saída (egress) da nuvem não haviam sido liberadas na infraestrutura de rede.',
+    pmPreventionTitle: 'Resolução & Salvaguardas',
+    pmPreventionText: 'Regras de rede aplicadas em 45 minutos de MTTR. Implantação imediata de monitoramento sintético (Synthetic Monitoring) das dependências críticas, alarmes de Pods NotReady e métricas de taxa de reinício.',
 
-    // Incident Troubleshooting
-    tsTag: 'Estudo de Caso de Causa Raiz',
-    tsTitle: 'O Caso do TCP 443: Troubleshooting com MTTR de 45 minutos',
-    tsDesc: 'Um postmortem representativo de produção demonstrando método de investigação rigoroso e prevenção blameless.',
-    tsBadge: 'Incidente Real em Produção • 45m MTTR',
-    tsStep1Title: 'O Sintoma',
-    tsStep1Desc: 'Num deploy em produção, múltiplos pods entraram em loop de reinício (CrashLoopBackOff). A suspeita imediata e óbvia foi o Redis, dependência crítica do serviço.',
-    tsStep2Title: 'A Investigação',
-    tsStep2Desc: 'O Redis foi testado e estava saudável. Testando as dependências de ponta a ponta, isolou-se que o DNS resolvia o serviço de autenticação, mas o handshake TCP na porta 443 travava sem fechar.',
-    tsStep3Title: 'A Causa Raiz',
-    tsStep3Desc: 'A aplicação tinha sido alocada em um node pool e subnet novos de nuvem que ainda não possuíam as regras de segurança de saída (egress) liberadas na rede.',
-    tsStep4Title: 'Prevenção & Alarmística',
-    tsStep4Desc: 'Rede liberada em 45 min de MTTR. Implantação imediata de monitoramento sintético (Synthetic Monitoring) das dependências críticas, alertas de pods NotReady e contagem de restarts.',
+    headingExperience: 'Trajetória Profissional',
+    subheadingExperience: 'Histórico de atuação em engenharia de plataforma, orquestração multi-cloud e SRE em produção.',
+    exp1D1: 'Responsável pela disponibilidade, resiliência e escala da infraestrutura de microsserviços em meios de pagamento onde qualquer parada tem impacto financeiro imediato.',
+    exp1D2: 'Conduziu a migração de ingress-nginx para Istio Service Mesh (Gateway, HTTPRoute, DestinationRule) para controle fino de tráfego L7 e políticas de destino.',
+    exp1D3: 'Operação da camada de borda e gestão de APIs: Azure Front Door (roteamento global, WAF, balanceamento), Azure APIM e Azure CDN.',
+    exp1D4: 'Liderou a migração de pipelines de infraestrutura de Azure DevOps para GitHub Actions com workflows reutilizáveis.',
+    exp1D5: 'Evoluiu a observabilidade com Datadog APM, Prometheus, Grafana, Loki e OpenTelemetry, estabelecendo monitoramento sintético e SLOs em produção.',
 
-    // Skills Matrix
-    skillsTag: 'Capacidades e Ferramental',
-    skillsTitle: 'O Que Utilizo no Dia a Dia',
-    skillsDesc: 'Ferramentas e frameworks testados em produção para plataformas de alta disponibilidade e operações automatizadas.',
-    catOrch: 'Orquestração & Computação',
+    exp2D1: 'Responsabilidade ponta a ponta pela confiabilidade e provisionamento de infraestrutura em quatro nuvens: AWS (EKS), Azure (AKS), Google Cloud (GKE) e Huawei Cloud (CCE).',
+    exp2D2: 'Provisionamento de infraestrutura multi-cloud com Terraform e implantação de GitOps com ArgoCD, tornando os clusters auditáveis, reprodutíveis e reversíveis.',
+    exp2D3: 'Operação de plataformas de mensageria em produção: Apache Kafka, Amazon SQS e Azure Service Bus.',
+    exp2D4: 'Elevou a maturidade de observabilidade com OpenTelemetry e Datadog, migrando o monitoramento de reativo para detecção proativa de degradação.',
+
+    exp3D1: 'Projetou e implementou clusters Amazon ECS para orquestração de containers com foco em escalabilidade e resiliência.',
+    exp3D2: 'Construiu pipelines automatizados de CI/CD para deploy padronizado nos clusters ECS entre times de produto.',
+    exp3D3: 'Conduziu provas de conceito de automação e DevOps, orientando a avaliação e adoção do Amazon EKS.',
+
+    exp4D1: 'Evolução da arquitetura AWS da empresa, provisionando ambientes através de módulos Terraform e pipelines de IaC.',
+    exp4D2: 'Gerenciou workloads em Kubernetes: deploys, políticas de auto-scaling, segurança e observabilidade.',
+    exp4D3: 'Integrou quality gates no SonarQube para barrar código fora do padrão antes da entrada em produção.',
+
+    exp5D1: 'Operação de infraestrutura AWS de missão crítica em saúde onde a indisponibilidade tem custo clínico e financeiro direto.',
+    exp5D2: 'Automação de provisionamento com Terraform e construção de pipelines de CI/CD em Azure DevOps e Jenkins.',
+    exp5D3: 'Implantação do Teleport para acesso privilegiado auditável, substituindo bastions diretos por sessões com rastreabilidade completa.',
+    exp5D4: 'Conduziu iniciativas de redução de custo na AWS via Trusted Advisor e rightsizing de recursos ociosos.',
+
+    exp6D1: 'Administração de servidores físicos, hypervisors Xen e virtualização de containers com Docker.',
+    exp6D2: 'Configuração e diagnóstico de serviços essenciais de rede: DNS, roteamento TCP/IP, proxies reversos HTTP/HTTPS (Nginx, Apache) e LDAP.',
+    exp6D3: 'Projeto e implantação de sistemas de monitoramento de rede e servidores com Zabbix, Grafana e automação em Shell.',
+
+    headingSkills: 'Competências Técnicas',
+    subheadingSkills: 'Ferramentas, frameworks e disciplinas de engenharia comprovadas em produção.',
+    catObs: 'Observabilidade & Monitoramento',
+    catOrch: 'Kubernetes & Cloud',
     catIac: 'Infraestrutura como Código',
-    catObs: 'Observabilidade & Telemetria',
-    catDel: 'Entrega Contínua & GitOps',
-    catRel: 'Práticas de Confiabilidade & SRE',
+    catGitOps: 'Entrega Contínua & GitOps',
+    catRel: 'SRE & Confiabilidade',
     catLang: 'Linguagens & Automação',
 
-    // Platform Work Experience
-    expTag: 'Impacto Real',
-    expTitle: 'Engenharia de Plataforma em Produção',
-    expDesc: 'Arquitetura, migrações de alta escala e engenharia de confiabilidade em ambientes críticos.',
-    case1Title: 'Plataforma de Pagamentos de Alto Volume (K8s Multi-Cloud @ Elo)',
-    case1Summary: 'Projetei e operei infraestrutura Kubernetes multi-cluster executando serviços críticos de pagamento entre nuvens com Istio Service Mesh, failover automatizado e deploys sem downtime.',
-    case1B1: 'Kubernetes multi-cluster em AWS (EKS), Azure (AKS), Google Cloud (GKE) e Huawei Cloud (CCE).',
-    case1B2: 'Migração de ingress-nginx para Istio Service Mesh (Gateway, HTTPRoute, DestinationRule) para controle granular L7.',
-    case1B3: 'Operação da camada de borda e APIs: Azure Front Door (WAF, roteamento global), Azure APIM e Azure CDN.',
+    headingEducation: 'Formação & Credenciais',
+    subheadingEducation: 'Qualificação formal em arquitetura de sistemas e certificações de nuvem.',
+    certArchTitle: 'Especialização em Arquitetura de Software',
+    certIfamTitle: 'Técnico em Informática',
 
-    case2Title: 'Migração de Entrega Enterprise (Azure DevOps para GitHub Actions)',
-    case2Summary: 'Arquitetei e executei migração completa da plataforma de pipelines legados do Azure DevOps para GitHub Actions moderno com workflows de segurança reutilizáveis e GitOps via ArgoCD.',
-    case2B1: 'Mais de 50 serviços migrados com zero interrupção no fluxo de desenvolvimento dos times.',
-    case2B2: 'Verificações automatizadas de segurança (SAST, scan de containers com Trivy e autenticação OIDC com AWS).',
-    case2B3: 'Padrão GitOps com ArgoCD com detecção de desvio (drift) e rollback instantâneo.',
-
-    case3Title: 'Infraestrutura AWS de Missão Crítica em Saúde (@ Albert Einstein)',
-    case3Summary: 'Operação de ambiente AWS onde indisponibilidade tem custo clínico e financeiro direto, automatizando governança de acesso e eficiência financeira.',
-    case3B1: 'Implantação de Teleport para acesso privilegiado auditável à infraestrutura, substituindo conexões diretas.',
-    case3B2: 'Provisionamento automatizado com Terraform e otimização contínua de custos via Trusted Advisor e rightsizing.',
-    case3B3: 'Desenvolvimento de ferramentas internas de automação em Python, Go e Shell para tarefas operacionais.',
-
-    case4Title: '8 Anos de Fundamentos em Datacenter & Redes Linux (UFPA & FADESP)',
-    case4Summary: 'Sólida bagagem em engenharia de sistemas, redes e virtualização construída antes da era da nuvem pública.',
-    case4B1: 'Administração de servidores físicos, hypervisors Xen e virtualização por containers Docker.',
-    case4B2: 'Fundamentos profundos de redes: DNS, roteamento TCP/IP, TLS/HTTPS, proxies reversos (Nginx/Apache) e LDAP.',
-    case4B3: 'Projeto e implantação de soluções completas de monitoramento de rede e servidores com Zabbix e Grafana.',
-
-    // SRE Calculator
-    calcTag: 'Ferramenta de Engenharia',
-    calcTitle: 'Calculadora de SLO & Orçamento de Erro',
-    calcDesc: 'Experimente metas de disponibilidade e veja o tempo real de downtime tolerado e taxas de consumo.',
-    calcLabelSlo: 'Escolha o SLO Alvo (%):',
-    calcLabelWindow: 'Janela de Tempo:',
-    calcWindow30: '30 Dias (Mês Móvel)',
-    calcWindow90: '90 Dias (Trimestre)',
-    calcWindow365: '365 Dias (Anual)',
-    calcResAllowed: 'Downtime Permitido',
-    calcResTotalReq: 'Orçamento de Erro (30d)',
-    calcResFastBurn: 'Alerta Fast-Burn (14.4x)',
-    calcInsight: '<strong>Visão de SRE:</strong> Um SLO de 99.9% permite ~43 minutos de downtime por mês. Em vez de acordar o plantonista por uma oscilação momentânea, o alerta de 14.4x só dispara se 2% do orçamento mensal queimar em 1 hora — reduzindo drasticamente falsos positivos.',
-
-    // Certifications & Education
-    certsTag: 'Credenciais & Formação',
-    certsTitle: 'Certificações & Especialização em Arquitetura',
-    certsDesc: 'Qualificação formal em arquitetura de software distribuído, plataformas de nuvem e práticas de GitOps.',
-    certGitOps: 'GitOps Certified',
-    certGitOpsDesc: 'Padrões Codefresh / Argo Project e entrega declarativa contínua',
-    certAwsWell: 'AWS Well-Architected Proficient',
-    certAwsWellDesc: 'Confiabilidade, Segurança, Performance e Otimização de Custos',
-    certEcs: 'Amazon ECS & Docker na AWS',
-    certEcsDesc: 'Orquestração de containers, networking e dimensionamento de tarefas',
-    certApiGw: 'Arquitetura de Amazon API Gateway',
-    certApiGwDesc: 'Gestão de APIs REST/HTTP, políticas de throttling e segurança',
-    certArch: 'Especialização em Arquitetura de Software',
-    certArchDesc: 'Full Cycle (DDD, Clean Architecture, Arquitetura Hexagonal, Event-Driven e Microserviços)',
-    certTech: 'Técnico em Informática (IFAM)',
-    certTechDesc: 'Instituto Federal de Educação, Ciência e Tecnologia do Amazonas',
-
-    contactTitle: 'Vamos Conversar sobre Engenharia de Plataforma e Confiabilidade',
-    contactDesc: 'Sempre disponível para trocar ideias sobre Kubernetes, escala com Terraform, arquiteturas de observabilidade e confiabilidade em produção.',
-    copyEmail: 'Copiar',
-    copiedText: 'Copiado para a área de transferência!',
-    footerText: 'Desenvolvido com HTML5 semântico, CSS & JS modernos • Zero dependências • Hospedado no GitHub Pages'
+    contactHeading: 'Vamos conversar',
+    contactSub: 'Disponível para discutir desafios de Kubernetes, engenharia de plataforma, GitOps e confiabilidade de produção.',
+    toastCopied: 'Copiado para a área de transferência'
   }
 };
 
 function initLanguage() {
   const langToggle = document.getElementById('lang-toggle');
-  let currentLang = localStorage.getItem('language') || 'en';
+  let currentLang = localStorage.getItem('language') || 'pt'; // Default to PT for local context or EN
 
   function updateTexts(lang) {
-    const dict = translations[lang] || translations.en;
+    const dict = translations[lang] || translations.pt;
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (dict[key]) {
@@ -409,8 +294,8 @@ function initLanguage() {
     });
 
     if (langToggle) {
-      langToggle.textContent = lang === 'en' ? 'PT' : 'EN';
-      langToggle.setAttribute('aria-label', lang === 'en' ? 'Mudar para Português' : 'Switch to English');
+      langToggle.textContent = lang === 'pt' ? 'EN' : 'PT';
+      langToggle.setAttribute('aria-label', lang === 'pt' ? 'Switch to English' : 'Mudar para Português');
     }
     document.documentElement.setAttribute('lang', lang === 'pt' ? 'pt-BR' : 'en');
   }
@@ -419,7 +304,7 @@ function initLanguage() {
 
   if (langToggle) {
     langToggle.addEventListener('click', () => {
-      currentLang = currentLang === 'en' ? 'pt' : 'en';
+      currentLang = currentLang === 'pt' ? 'en' : 'pt';
       localStorage.setItem('language', currentLang);
       updateTexts(currentLang);
     });
@@ -427,68 +312,7 @@ function initLanguage() {
 }
 
 /* ==========================================================================
-   Interactive SRE Error Budget Calculator
-   ========================================================================== */
-function initCalculator() {
-  const sloBtns = document.querySelectorAll('.slo-btn');
-  const windowSelect = document.getElementById('calc-window');
-  const downtimeEl = document.getElementById('calc-downtime');
-  const budgetPctEl = document.getElementById('calc-budget-pct');
-  const burnRateEl = document.getElementById('calc-burn-rate');
-
-  let currentSlo = 99.9;
-
-  function calculate() {
-    const days = parseInt(windowSelect ? windowSelect.value : '30', 10);
-    const totalMinutes = days * 24 * 60;
-    const errorBudgetPct = (100 - currentSlo);
-    const allowedDowntimeMinutes = totalMinutes * (errorBudgetPct / 100);
-
-    const hours = Math.floor(allowedDowntimeMinutes / 60);
-    const minutes = Math.floor(allowedDowntimeMinutes % 60);
-    const seconds = Math.round((allowedDowntimeMinutes - Math.floor(allowedDowntimeMinutes)) * 60);
-
-    let formattedDowntime = '';
-    if (hours > 0) formattedDowntime += `${hours}h `;
-    if (minutes > 0 || hours > 0) formattedDowntime += `${minutes}m `;
-    formattedDowntime += `${seconds}s`;
-
-    if (downtimeEl) downtimeEl.textContent = formattedDowntime.trim();
-    if (budgetPctEl) budgetPctEl.textContent = `${errorBudgetPct.toFixed(2)}%`;
-
-    const twoPercentBurnMinutes = allowedDowntimeMinutes * 0.02;
-    const fastBurnSecs = Math.round(twoPercentBurnMinutes * 60);
-    const fbM = Math.floor(fastBurnSecs / 60);
-    const fbS = fastBurnSecs % 60;
-
-    let fastBurnText = '';
-    if (fbM > 0) fastBurnText += `${fbM}m `;
-    fastBurnText += `${fbS}s in 1h`;
-
-    if (burnRateEl) {
-      burnRateEl.textContent = fastBurnText;
-      burnRateEl.classList.toggle('warning', currentSlo >= 99.99);
-    }
-  }
-
-  sloBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      sloBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentSlo = parseFloat(btn.dataset.slo);
-      calculate();
-    });
-  });
-
-  if (windowSelect) {
-    windowSelect.addEventListener('change', calculate);
-  }
-
-  calculate();
-}
-
-/* ==========================================================================
-   Email Copy & Toast Notification
+   Email Copy & Toast
    ========================================================================== */
 function initEmailCopy() {
   const copyBtn = document.getElementById('copy-email-btn');
@@ -510,39 +334,14 @@ function initEmailCopy() {
         document.body.removeChild(input);
       }
 
-      showToast();
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2200);
+      }
     } catch (err) {
       console.error('Failed to copy email', err);
     }
-  });
-
-  function showToast() {
-    if (!toast) return;
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 2800);
-  }
-}
-
-/* ==========================================================================
-   Mobile Nav Toggle
-   ========================================================================== */
-function initMobileNav() {
-  const toggleBtn = document.getElementById('mobile-nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  if (!toggleBtn || !navLinks) return;
-
-  toggleBtn.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    toggleBtn.setAttribute('aria-expanded', isOpen);
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      toggleBtn.setAttribute('aria-expanded', 'false');
-    });
   });
 }
