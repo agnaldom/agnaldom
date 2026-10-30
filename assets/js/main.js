@@ -1,9 +1,10 @@
 /**
  * Agnaldo Marinho — SRE & Platform Engineer
- * Brittany Chiang v4 interactions: Tabs, Mobile Nav, Scroll Navbar, Language Switcher
+ * Brittany Chiang v4 + GitHub Theme Toggle (Dark & Light)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   initJobTabs();
   initMobileNav();
   initNavbarScroll();
@@ -11,7 +12,90 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. Job Experience Tabs (Brittany Chiang v4 style)
+   1. Theme Management (GitHub Dark / Light)
+   ========================================================================== */
+function initTheme() {
+  const metaColorScheme = document.querySelector('meta[name="color-scheme"]');
+  const themeToggle = document.getElementById('theme-toggle');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const storedTheme = localStorage.getItem('theme');
+
+  function getSystemScheme() {
+    return systemPrefersDark.matches ? 'dark' : 'light';
+  }
+
+  function renderThemeIcon(theme) {
+    if (!themeToggle) return;
+    const iconContainer = themeToggle.querySelector('.theme-icon');
+    if (!iconContainer) return;
+
+    if (theme === 'dark') {
+      // Show Sun icon (click to switch to light)
+      themeToggle.setAttribute('title', 'Mudar para tema claro');
+      themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
+      iconContainer.innerHTML = `
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      `;
+    } else {
+      // Show Moon icon (click to switch to dark)
+      themeToggle.setAttribute('title', 'Mudar para tema escuro');
+      themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
+      iconContainer.innerHTML = `
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      `;
+    }
+  }
+
+  function applyTheme(theme, isUserAction = false) {
+    const resolvedTheme = (theme === 'system' || !theme) ? getSystemScheme() : theme;
+
+    document.documentElement.setAttribute('data-theme', resolvedTheme);
+    if (metaColorScheme) {
+      metaColorScheme.setAttribute('content', resolvedTheme);
+    }
+
+    renderThemeIcon(resolvedTheme);
+
+    if (isUserAction) {
+      localStorage.setItem('theme', resolvedTheme);
+    }
+  }
+
+  // Initial theme application
+  const initialTheme = storedTheme || getSystemScheme() || 'dark';
+  applyTheme(initialTheme);
+
+  // System preference change listener
+  systemPrefersDark.addEventListener('change', () => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(getSystemScheme());
+    }
+  });
+
+  // Toggle button click listener
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const target = current === 'dark' ? 'light' : 'dark';
+      applyTheme(target, true);
+    });
+  }
+}
+
+/* ==========================================================================
+   2. Job Experience Tabs (Brittany Chiang v4 style)
    ========================================================================== */
 function initJobTabs() {
   const tabButtons = document.querySelectorAll('.tab-btn');
@@ -44,7 +128,7 @@ function initJobTabs() {
 }
 
 /* ==========================================================================
-   2. Mobile Hamburger Menu
+   3. Mobile Hamburger Menu
    ========================================================================== */
 function initMobileNav() {
   const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -64,25 +148,27 @@ function initMobileNav() {
 }
 
 /* ==========================================================================
-   3. Navbar Scroll Shadow Effect
+   4. Navbar Scroll Shadow Effect
    ========================================================================== */
 function initNavbarScroll() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    if (window.scrollY > 40) {
       header.style.height = 'var(--nav-scroll-height)';
-      header.style.boxShadow = '0 10px 30px -10px var(--navy-shadow)';
+      header.style.borderBottomColor = 'var(--color-border-default)';
+      header.style.boxShadow = '0 10px 30px -10px var(--card-shadow)';
     } else {
       header.style.height = 'var(--nav-height)';
+      header.style.borderBottomColor = 'transparent';
       header.style.boxShadow = 'none';
     }
   });
 }
 
 /* ==========================================================================
-   4. Internationalization (PT / EN)
+   5. Internationalization (PT / EN)
    ========================================================================== */
 const translations = {
   pt: {

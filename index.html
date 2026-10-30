@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
   <title>Agnaldo Marinho — SRE &amp; Platform Engineer</title>
   <meta name="description" content="Agnaldo Marinho — Especialista DevOps / SRE. 16 anos em TI, 8 construindo e operando plataformas de produção em meios de pagamento, saúde e energia. Kubernetes, Observabilidade, IaC &amp; GitOps.">
   <meta name="author" content="Agnaldo Marinho">
@@ -26,8 +27,8 @@
     <!-- Hexagon Logo with AM -->
     <a href="#" class="logo-hex" aria-label="Início">
       <svg width="42" height="48" viewBox="0 0 84 96">
-        <polygon stroke="#64ffda" stroke-width="5" fill="none" points="42 2, 82 25, 82 71, 42 94, 2 71, 2 25"></polygon>
-        <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" fill="#64ffda" font-size="28" font-family="'SF Mono', monospace" font-weight="700">AM</text>
+        <polygon stroke="currentColor" stroke-width="5" fill="none" points="42 2, 82 25, 82 71, 42 94, 2 71, 2 25"></polygon>
+        <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-size="28" font-family="'SF Mono', monospace" font-weight="700">AM</text>
       </svg>
     </a>
 
@@ -41,7 +42,27 @@
       </ol>
 
       <a href="https://www.linkedin.com/in/agnaldom" target="_blank" rel="noopener noreferrer" class="button-link button-small" data-i18n="btnResume">Currículo</a>
-      <button id="lang-toggle" class="lang-btn" type="button" aria-label="Mudar idioma">EN</button>
+      
+      <!-- Theme Switcher (GitHub Light / Dark) -->
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Alternar tema" title="Alternar tema (Claro / Escuro)">
+        <span class="theme-icon">
+          <!-- Default: Sun icon for switching to light mode -->
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </span>
+      </button>
+
+      <!-- Language Toggle (PT / EN) -->
+      <button id="lang-toggle" class="icon-btn" type="button" aria-label="Mudar idioma">EN</button>
     </nav>
 
     <!-- Mobile Hamburger Toggle -->
@@ -141,10 +162,10 @@
           </ul>
         </div>
 
-        <!-- Profile Photo with Teal Offset Frame -->
+        <!-- Profile Photo with Offset Frame -->
         <div class="about-pic">
           <div class="about-pic-wrapper">
-            <img src="assets/images/profile.jpg" alt="Foto de perfil de Agnaldo Marinho" class="about-pic-img" width="300" height="300">
+            <img src="assets/images/profile.jpg" alt="Foto de perfil de Agnaldo Marinho" class="about-pic-img" width="280" height="280">
           </div>
         </div>
       </div>
@@ -190,7 +211,7 @@
             </h3>
             <p class="range">Julho 2023 – Julho 2025 &bull; Remoto</p>
             <ul>
-              <li>Responsabilidade ponta a ponta pela confiabilidade e provisionamento de infraestrutura em <strong>quatro nuvens</strong>: AWS (EKS), Azure (AKS), Google Cloud (GKE) e Huawei Cloud (CCE) com Terraform.</li>
+              <li>Responsabilidade ponta a ponta pela infraestrutura em <strong>quatro nuvens</strong>: AWS (EKS), Azure (AKS), Google Cloud (GKE) e Huawei Cloud (CCE) com Terraform.</li>
               <li>Implantei e operei entrega contínua no modelo GitOps com <strong>ArgoCD</strong>, tornando o estado dos clusters auditável e reversível.</li>
               <li>Operei mensageria em produção com <strong>Apache Kafka</strong>, Amazon SQS e Azure Service Bus para comunicação assíncrona.</li>
               <li>Defini SLIs, SLOs e error budgets em produção, migrando o time de monitoração reativa para detecção proativa de degradação.</li>
@@ -406,7 +427,7 @@
   <footer>
     <div class="footer-text">
       <p>Desenvolvido por Agnaldo Marinho</p>
-      <p>Design inspirado em <a href="https://v4.brittanychiang.com/" target="_blank" rel="noopener noreferrer">Brittany Chiang (v4)</a> &bull; Hospedado no GitHub Pages</p>
+      <p>Design inspirado em <a href="https://v4.brittanychiang.com/" target="_blank" rel="noopener noreferrer">Brittany Chiang (v4)</a> &bull; Tema GitHub Dark &amp; Light</p>
     </div>
   </footer>
 
